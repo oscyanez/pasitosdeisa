@@ -1,0 +1,2969 @@
+<!doctype html>
+<html lang="es-CL">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pasitos de Isa | Guardería Infantil en Rancagua</title>
+    <meta
+      name="description"
+      content="Guardería Infantil Pasitos de Isa en Rancagua con atención flexible las 24 horas, los 7 días de la semana para niños de 6 meses a 5 años. Convenios con minería, salud y retail."
+    />
+
+    <!-- Google Fonts: Fredoka (redondeada y amigable) & Nunito (cálida y legible) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              display: ["Fredoka", "sans-serif"],
+              sans: ["Nunito", "sans-serif"],
+            },
+            colors: {
+              brand: {
+                purple: "#7C5DFA",
+                purpleLight: "#F3EFFF",
+                yellow: "#FFB800",
+                yellowLight: "#FFF9E6",
+                green: "#6BBF3B",
+                greenLight: "#EEF9E8",
+                blue: "#3B9AE1",
+                blueLight: "#EAF5FD",
+                orange: "#F47A20",
+                orangeLight: "#FEF2E8",
+                pink: "#F0527F",
+                pinkLight: "#FDECF1",
+                cream: "#FFFBF2",
+              },
+            },
+            animation: {
+              float: "float 4s ease-in-out infinite",
+              "pulse-slow": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+              wiggle: "wiggle 2.5s ease-in-out infinite",
+            },
+            keyframes: {
+              float: {
+                "0%, 100%": { transform: "translateY(0px)" },
+                "50%": { transform: "translateY(-8px)" },
+              },
+              wiggle: {
+                "0%, 100%": { transform: "rotate(-3deg)" },
+                "50%": { transform: "rotate(3deg)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      /* Estilos base y transiciones suaves entre vistas */
+      body {
+        font-family: "Nunito", sans-serif;
+        background-color: #ffffff;
+        color: #2d3142;
+        overflow-x: hidden;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      .font-display {
+        font-family: "Fredoka", sans-serif;
+      }
+      .page-view {
+        display: none;
+        animation: fadeInScale 0.35s ease-out forwards;
+      }
+      .page-view.active {
+        display: block;
+      }
+      @keyframes fadeInScale {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      /* Sombra suave infantil tipo tarjeta */
+      .card-playful {
+        box-shadow:
+          0 12px 28px -6px rgba(124, 93, 250, 0.12),
+          0 4px 10px -2px rgba(0, 0, 0, 0.04);
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease;
+      }
+      .card-playful:hover {
+        transform: translateY(-5px);
+        box-shadow:
+          0 18px 34px -6px rgba(124, 93, 250, 0.18),
+          0 6px 14px -2px rgba(0, 0, 0, 0.06);
+      }
+      /* Ocultar scrollbar en menú móvil manteniendo desplazamiento */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+  </head>
+  <body
+    class="flex flex-col min-h-screen selection:bg-brand-yellow selection:text-gray-900"
+  >
+    <!-- =====================================================================
+         TOAST / SISTEMA DE MENSAJES (Reemplazo amigable de alert())
+    ====================================================================== -->
+    <div
+      id="toast-container"
+      class="fixed top-5 right-5 z-50 flex flex-col gap-3 max-w-sm pointer-events-none"
+    ></div>
+
+    <!-- =====================================================================
+         HEADER SUPERIOR & BARRA DE NAVEGACIÓN TIPO PÍLDORAS DE COLORES
+    ====================================================================== -->
+    <header
+      class="bg-white sticky top-0 z-40 shadow-sm border-b border-purple-50"
+    >
+      <!-- Fila 1: Logo + Contacto Directo Rancagua + Botón WhatsApp -->
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-4"
+      >
+        <!-- Logo Pasitos de Isa -->
+        <button
+          onclick="navigateTo('inicio')"
+          class="flex items-center gap-3 text-left group focus:outline-none"
+        >
+          <div
+            class="relative w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center bg-brand-yellowLight rounded-2xl border-2 border-brand-yellow group-hover:scale-105 transition-transform"
+          >
+            <!-- SVG Sol y Huellitas alegre -->
+            <svg
+              class="w-10 h-10 animate-wiggle"
+              viewBox="0 0 64 64"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="32" cy="32" r="15" fill="#FFB800" />
+              <circle cx="27" cy="29" r="2" fill="#2D3142" />
+              <circle cx="37" cy="29" r="2" fill="#2D3142" />
+              <path
+                d="M27 35C28.5 37.5 35.5 37.5 37 35"
+                stroke="#2D3142"
+                stroke-width="2.5"
+                stroke-linecap="round"
+              />
+              <!-- Pétalos / Rayos alegres -->
+              <circle cx="32" cy="9" r="4.5" fill="#F47A20" />
+              <circle cx="32" cy="55" r="4.5" fill="#6BBF3B" />
+              <circle cx="9" cy="32" r="4.5" fill="#7C5DFA" />
+              <circle cx="55" cy="32" r="4.5" fill="#3B9AE1" />
+              <circle cx="16" cy="16" r="4" fill="#F0527F" />
+              <circle cx="48" cy="48" r="4" fill="#F0527F" />
+              <circle cx="48" cy="16" r="4" fill="#6BBF3B" />
+              <circle cx="16" cy="48" r="4" fill="#7C5DFA" />
+            </svg>
+            <span
+              class="absolute -bottom-1.5 -right-1.5 bg-brand-purple text-white text-[10px] font-display font-bold px-1.5 py-0.5 rounded-full shadow"
+              >24/7</span
+            >
+          </div>
+          <div>
+            <div class="flex items-center gap-1.5">
+              <span
+                class="font-display text-2xl sm:text-3xl font-bold tracking-tight text-brand-purple"
+                >Pasitos</span
+              >
+              <span
+                class="font-display text-xl sm:text-2xl font-bold bg-brand-yellow text-gray-900 px-2.5 py-0.5 rounded-xl"
+                >de Isa</span
+              >
+            </div>
+            <p class="text-xs sm:text-sm font-semibold text-gray-500">
+              Rancagua • Portal Astorga, Rancagua
+            </p>
+          </div>
+        </button>
+
+        <!-- Teléfono Rancagua y Botón Rápido -->
+        <div class="flex items-center gap-3 sm:gap-5">
+          <a
+            href="tel:+56722345678"
+            class="hidden md:flex items-center gap-3 bg-purple-50 hover:bg-purple-100 px-4 py-2 rounded-2xl transition-colors"
+          >
+            <div
+              class="w-10 h-10 rounded-full bg-brand-purple text-white flex items-center justify-center shadow-sm"
+            >
+              <i class="fa-solid fa-phone-volume"></i>
+            </div>
+            <div>
+              <p
+                class="text-xs font-bold text-brand-purple uppercase tracking-wider"
+              >
+                Llámanos en Rancagua
+              </p>
+              <p class="font-display text-base font-bold text-gray-800">
+                +56 72 234 5678
+              </p>
+            </div>
+          </a>
+
+          <button
+            onclick="
+              openWhatsApp(
+                'Hola Pasitos de Isa, me gustaría consultar por cupos y horarios del programa PASITOS 24/7 en Rancagua.',
+              )
+            "
+            class="flex items-center gap-2 bg-gradient-to-r from-[#25D366] to-[#1EBE5D] hover:from-[#1EBE5D] hover:to-[#17A34A] text-white font-display font-semibold text-sm sm:text-base px-4 sm:px-6 py-2.5 sm:py-3 rounded-full shadow-md hover:shadow-lg transition-all transform hover:scale-105"
+          >
+            <i class="fa-brands fa-whatsapp text-xl"></i>
+            <span>Consultar WhatsApp</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Fila 2: Barra de Navegación tipo Píldoras de Colores (Inspirada en la referencia) -->
+      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-3">
+        <div
+          id="nav-pills"
+          class="flex items-center justify-start lg:justify-center gap-2 overflow-x-auto no-scrollbar py-1"
+        >
+          <button
+            data-page="inicio"
+            onclick="navigateTo('inicio')"
+            class="nav-pill shrink-0 flex items-center gap-2 px-5 py-2.5 rounded-full font-display font-semibold text-sm sm:text-base text-white bg-brand-purple shadow-md transition-all"
+          >
+            <i class="fa-solid fa-house"></i>
+            <span>Inicio</span>
+          </button>
+          <button
+            data-page="nosotros"
+            onclick="navigateTo('nosotros')"
+            class="nav-pill shrink-0 flex items-center gap-2 px-5 py-2.5 rounded-full font-display font-semibold text-sm sm:text-base text-gray-800 bg-brand-yellow hover:opacity-95 shadow-sm transition-all"
+          >
+            <i class="fa-solid fa-heart"></i>
+            <span>Nosotros</span>
+          </button>
+          <button
+            data-page="servicios"
+            onclick="navigateTo('servicios')"
+            class="nav-pill shrink-0 flex items-center gap-2 px-5 py-2.5 rounded-full font-display font-semibold text-sm sm:text-base text-white bg-brand-green hover:opacity-95 shadow-sm transition-all"
+          >
+            <i class="fa-solid fa-clock"></i>
+            <span>Servicios 24/7</span>
+          </button>
+          <button
+            data-page="instalaciones"
+            onclick="navigateTo('instalaciones')"
+            class="nav-pill shrink-0 flex items-center gap-2 px-5 py-2.5 rounded-full font-display font-semibold text-sm sm:text-base text-white bg-brand-blue hover:opacity-95 shadow-sm transition-all"
+          >
+            <i class="fa-solid fa-shapes"></i>
+            <span>Instalaciones</span>
+          </button>
+          <button
+            data-page="convenios"
+            onclick="navigateTo('convenios')"
+            class="nav-pill shrink-0 flex items-center gap-2 px-5 py-2.5 rounded-full font-display font-semibold text-sm sm:text-base text-white bg-brand-pink hover:opacity-95 shadow-sm transition-all"
+          >
+            <i class="fa-solid fa-handshake"></i>
+            <span>Convenios</span>
+          </button>
+          <button
+            data-page="contacto"
+            onclick="navigateTo('contacto')"
+            class="nav-pill shrink-0 flex items-center gap-2 px-5 py-2.5 rounded-full font-display font-semibold text-sm sm:text-base text-white bg-brand-orange hover:opacity-95 shadow-sm transition-all"
+          >
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Contacto</span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- =====================================================================
+         CONTENEDOR PRINCIPAL DE VISTAS MULTIPÁGINA
+    ====================================================================== -->
+    <main class="flex-grow">
+      <!-- =================================================================
+             VISTA 1: INICIO
+        ================================================================== -->
+      <section id="view-inicio" class="page-view active">
+        <div
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12 space-y-12"
+        >
+          <!-- HERO BANNER CON DOODLES INFANTILES -->
+          <div
+            class="relative overflow-hidden rounded-[2.2rem] bg-gradient-to-br from-[#F3EFFF] via-[#FBF8FF] to-[#FFF6E5] border-2 border-purple-100 p-6 sm:p-10 lg:p-12 shadow-sm"
+          >
+            <!-- Doodle Arcoíris esquina superior izquierda -->
+            <svg
+              class="w-24 h-16 sm:w-32 sm:h-20 absolute top-4 left-4 opacity-90 pointer-events-none"
+              viewBox="0 0 120 70"
+              fill="none"
+            >
+              <path
+                d="M10 60C10 32.3858 32.3858 10 60 10C87.6142 10 110 32.3858 110 60"
+                stroke="#F0527F"
+                stroke-width="7"
+                stroke-linecap="round"
+              />
+              <path
+                d="M22 60C22 39.0132 39.0132 22 60 22C80.9868 22 98 39.0132 98 60"
+                stroke="#FFB800"
+                stroke-width="7"
+                stroke-linecap="round"
+              />
+              <path
+                d="M34 60C34 45.6406 45.6406 34 60 34C74.3594 34 86 45.6406 86 60"
+                stroke="#6BBF3B"
+                stroke-width="7"
+                stroke-linecap="round"
+              />
+              <path
+                d="M46 60C46 52.268 52.268 46 60 46C67.732 46 74 52.268 74 60"
+                stroke="#3B9AE1"
+                stroke-width="7"
+                stroke-linecap="round"
+              />
+            </svg>
+
+            <!-- Doodle Sol sonriente -->
+            <svg
+              class="w-12 h-12 sm:w-16 sm:h-16 absolute top-6 left-1/2 -translate-x-1/2 hidden md:block animate-float pointer-events-none"
+              viewBox="0 0 64 64"
+              fill="none"
+            >
+              <circle
+                cx="32"
+                cy="32"
+                r="14"
+                stroke="#FFB800"
+                stroke-width="3"
+                fill="#FFF9E6"
+              />
+              <circle cx="28" cy="30" r="1.8" fill="#FFB800" />
+              <circle cx="36" cy="30" r="1.8" fill="#FFB800" />
+              <path
+                d="M28 35C30 37 34 37 36 35"
+                stroke="#FFB800"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M32 8V13M32 51V56M8 32H13M51 32H56M15 15L19 19M45 45L49 49M49 15L45 19M19 45L15 49"
+                stroke="#FFB800"
+                stroke-width="3"
+                stroke-linecap="round"
+              />
+            </svg>
+
+            <!-- Doodle Avioncito de papel -->
+            <svg
+              class="w-14 h-14 absolute top-8 right-8 text-brand-purple/40 hidden sm:block pointer-events-none"
+              viewBox="0 0 64 64"
+              fill="none"
+            >
+              <path
+                d="M54 12L10 30L26 36L54 12ZM54 12L38 52L26 36M26 36V48L33 41"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+
+            <div
+              class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10 pt-8 sm:pt-6"
+            >
+              <!-- Columna Texto Hero -->
+              <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
+                <div
+                  class="inline-flex items-center gap-2 bg-white px-4 py-1.5 rounded-full shadow-sm border border-purple-100"
+                >
+                  <span
+                    class="w-2.5 h-2.5 rounded-full bg-brand-green animate-ping"
+                  ></span>
+                  <span class="text-xs sm:text-sm font-bold text-brand-purple"
+                    >Matrículas Abiertas • Astorga #219, Piso 2, Rancagua</span
+                  >
+                </div>
+
+                <h1
+                  class="font-display text-3xl sm:text-5xl lg:text-[3.25rem] font-bold leading-tight text-gray-800"
+                >
+                  En Pasitos de Isa cuidamos sus primeros pasos,
+                  <span class="text-brand-purple">las 24 horas del día</span>
+                </h1>
+
+                <p
+                  class="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
+                >
+                  Un segundo hogar seguro, alegre y lleno de cariño en
+                  <strong>Rancagua</strong> para niños y niñas de
+                  <strong>6 meses a 5 años</strong>. Con nuestro modelo
+                  <strong>Pasitos 24/7</strong> nos adaptamos a tus turnos
+                  laborales de día, noche y fines de semana para darte total
+                  tranquilidad.
+                </p>
+
+                <!-- Botones de Acción Hero -->
+                <div
+                  class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2"
+                >
+                  <button
+                    onclick="
+                      openWhatsApp(
+                        'Hola Pasitos de Isa, quisiera información sobre cupos y valores para mi hijo/a.',
+                      )
+                    "
+                    class="w-full sm:w-auto flex items-center justify-center gap-2.5 bg-brand-purple hover:bg-[#6847F5] text-white font-display font-semibold text-base sm:text-lg px-7 py-4 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5"
+                  >
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    <span>Consultar por WhatsApp</span>
+                    <i class="fa-solid fa-arrow-right text-sm"></i>
+                  </button>
+                  <button
+                    onclick="navigateTo('servicios')"
+                    class="w-full sm:w-auto flex items-center justify-center gap-2 bg-white hover:bg-brand-yellowLight text-gray-800 border-2 border-brand-yellow font-display font-semibold text-base sm:text-lg px-7 py-3.5 rounded-full shadow-sm transition-all"
+                  >
+                    <i class="fa-solid fa-clock text-brand-orange"></i>
+                    <span>Conocer Modelo 24/7</span>
+                  </button>
+                </div>
+
+                <!-- 3 Insignias de Confianza -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4">
+                  <div
+                    class="flex items-center gap-3 bg-white/90 backdrop-blur-sm px-4 py-3 rounded-2xl border border-green-100 shadow-sm"
+                  >
+                    <div
+                      class="w-10 h-10 rounded-full bg-brand-greenLight text-brand-green flex items-center justify-center shrink-0"
+                    >
+                      <i class="fa-solid fa-clock-rotate-left text-lg"></i>
+                    </div>
+                    <span
+                      class="font-display font-semibold text-sm text-gray-700 leading-tight"
+                      >Atención 24/7 Flexible</span
+                    >
+                  </div>
+                  <div
+                    class="flex items-center gap-3 bg-white/90 backdrop-blur-sm px-4 py-3 rounded-2xl border border-pink-100 shadow-sm"
+                  >
+                    <div
+                      class="w-10 h-10 rounded-full bg-brand-pinkLight text-brand-pink flex items-center justify-center shrink-0"
+                    >
+                      <i class="fa-solid fa-user-nurse text-lg"></i>
+                    </div>
+                    <span
+                      class="font-display font-semibold text-sm text-gray-700 leading-tight"
+                      >Equipo Especializado</span
+                    >
+                  </div>
+                  <div
+                    class="flex items-center gap-3 bg-white/90 backdrop-blur-sm px-4 py-3 rounded-2xl border border-yellow-100 shadow-sm"
+                  >
+                    <div
+                      class="w-10 h-10 rounded-full bg-brand-yellowLight text-brand-orange flex items-center justify-center shrink-0"
+                    >
+                      <i class="fa-solid fa-shield-heart text-lg"></i>
+                    </div>
+                    <span
+                      class="font-display font-semibold text-sm text-gray-700 leading-tight"
+                      >Entorno Seguro en Rancagua</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- Columna Fotografía Hero -->
+              <div class="lg:col-span-5 relative">
+                <div
+                  class="relative rounded-[2rem] overflow-hidden border-4 border-white shadow-xl aspect-[4/3] bg-purple-100"
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=900&q=80"
+                    onerror="
+                      this.src =
+                        'https://placehold.co/800x600/F3EFFF/7C5DFA?text=Educadora+y+Niños+Jugando'
+                    "
+                    alt="Educadora jugando con niños en guardería Pasitos de Isa Rancagua"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <!-- Tarjeta flotante 24/7 -->
+                <div
+                  class="absolute -bottom-4 -left-3 sm:-left-6 bg-white p-3.5 sm:p-4 rounded-2xl shadow-lg border-2 border-brand-yellow flex items-center gap-3 animate-float"
+                >
+                  <div
+                    class="w-11 h-11 rounded-xl bg-brand-yellow text-gray-900 flex items-center justify-center font-display font-bold text-lg"
+                  >
+                    24h
+                  </div>
+                  <div>
+                    <p class="font-display font-bold text-sm text-gray-800">
+                      Abiertos Lunes a Domingo
+                    </p>
+                    <p class="text-xs text-gray-500 font-semibold">
+                      Turnos diurnos y nocturnos
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4 TARJETAS DE COLORES VIBRANTES (Estilo referencia LittleSteps) -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Tarjeta 1: Morado - Modelo PASITOS 24/7 -->
+            <div
+              class="card-playful rounded-3xl bg-brand-purple text-white p-6 flex flex-col justify-between"
+            >
+              <div>
+                <div class="text-center mb-4">
+                  <h3 class="font-display text-2xl font-bold">
+                    Modelo pasitos 24/7
+                  </h3>
+                  <p class="text-purple-100 text-sm font-semibold">
+                    Cuidado Continuo Flexible
+                  </p>
+                </div>
+                <div
+                  class="rounded-2xl overflow-hidden border-4 border-white/30 aspect-[16/10] mb-4 bg-purple-800"
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=600&q=80"
+                    onerror="
+                      this.src =
+                        'https://placehold.co/600x380/7C5DFA/FFFFFF?text=Modelo+24/7'
+                    "
+                    alt="Atención 24/7 flexible"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <p
+                  class="text-sm text-purple-50 leading-relaxed text-center mb-5"
+                >
+                  Turnos diurnos, nocturnos y fines de semana diseñados para
+                  familias con horarios rotativos en Rancagua.
+                </p>
+              </div>
+              <button
+                onclick="navigateTo('servicios')"
+                class="w-full py-2.5 px-4 rounded-full border-2 border-white/70 hover:bg-white hover:text-brand-purple font-display font-semibold text-sm transition-colors flex items-center justify-center gap-2"
+              >
+                <span>Ver Turnos</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+
+            <!-- Tarjeta 2: Naranja - Sala Cuna -->
+            <div
+              class="card-playful rounded-3xl bg-brand-orange text-white p-6 flex flex-col justify-between"
+            >
+              <div>
+                <div class="text-center mb-4">
+                  <h3 class="font-display text-2xl font-bold">Sala Cuna</h3>
+                  <p class="text-orange-100 text-sm font-semibold">
+                    6 meses a 2 años
+                  </p>
+                </div>
+                <div
+                  class="rounded-2xl overflow-hidden border-4 border-white/30 aspect-[16/10] mb-4 bg-orange-800"
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=600&q=80"
+                    onerror="
+                      this.src =
+                        'https://placehold.co/600x380/F47A20/FFFFFF?text=Sala+Cuna'
+                    "
+                    alt="Sala cuna estimulación temprana"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <p
+                  class="text-sm text-orange-50 leading-relaxed text-center mb-5"
+                >
+                  Estimulación temprana, apego seguro, lactario equipado y
+                  descanso tranquilo con monitoreo permanente.
+                </p>
+              </div>
+              <button
+                onclick="navigateTo('instalaciones')"
+                class="w-full py-2.5 px-4 rounded-full border-2 border-white/70 hover:bg-white hover:text-brand-orange font-display font-semibold text-sm transition-colors flex items-center justify-center gap-2"
+              >
+                <span>Conocer Salas</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+
+            <!-- Tarjeta 3: Verde - Nivel Medio -->
+            <div
+              class="card-playful rounded-3xl bg-brand-green text-white p-6 flex flex-col justify-between"
+            >
+              <div>
+                <div class="text-center mb-4">
+                  <h3 class="font-display text-2xl font-bold">Nivel Medio</h3>
+                  <p class="text-green-100 text-sm font-semibold">2 a 4 años</p>
+                </div>
+                <div
+                  class="rounded-2xl overflow-hidden border-4 border-white/30 aspect-[16/10] mb-4 bg-green-800"
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1544776193-352d25ca82cd?auto=format&fit=crop&w=600&q=80"
+                    onerror="
+                      this.src =
+                        'https://placehold.co/600x380/6BBF3B/FFFFFF?text=Nivel+Medio'
+                    "
+                    alt="Nivel medio aprendizaje a través del juego"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <p
+                  class="text-sm text-green-50 leading-relaxed text-center mb-5"
+                >
+                  Aprendizaje basado en el juego, desarrollo del lenguaje,
+                  autonomía y habilidades socioemocionales.
+                </p>
+              </div>
+              <button
+                onclick="navigateTo('nosotros')"
+                class="w-full py-2.5 px-4 rounded-full border-2 border-white/70 hover:bg-white hover:text-brand-green font-display font-semibold text-sm transition-colors flex items-center justify-center gap-2"
+              >
+                <span>Nuestro Enfoque</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+
+            <!-- Tarjeta 4: Azul - Transición -->
+            <div
+              class="card-playful rounded-3xl bg-brand-blue text-white p-6 flex flex-col justify-between"
+            >
+              <div>
+                <div class="text-center mb-4">
+                  <h3 class="font-display text-2xl font-bold">Transición</h3>
+                  <p class="text-blue-100 text-sm font-semibold">4 a 5 años</p>
+                </div>
+                <div
+                  class="rounded-2xl overflow-hidden border-4 border-white/30 aspect-[16/10] mb-4 bg-blue-800"
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80"
+                    onerror="
+                      this.src =
+                        'https://placehold.co/600x380/3B9AE1/FFFFFF?text=Transicion'
+                    "
+                    alt="Nivel transición preparación preescolar"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <p
+                  class="text-sm text-blue-50 leading-relaxed text-center mb-5"
+                >
+                  Preparación preescolar integral, exploración creativa,
+                  psicomotricidad y curiosidad científica.
+                </p>
+              </div>
+              <button
+                onclick="navigateTo('servicios')"
+                class="w-full py-2.5 px-4 rounded-full border-2 border-white/70 hover:bg-white hover:text-brand-blue font-display font-semibold text-sm transition-colors flex items-center justify-center gap-2"
+              >
+                <span>Simular Plan</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- BANNER DESTACADO DE TURNOS ROTATIVOS (Estilo cinta amarilla de referencia) -->
+          <div
+            class="rounded-3xl bg-brand-yellowLight border-2 border-brand-yellow/60 p-6 sm:px-10 sm:py-7 flex flex-col lg:flex-row items-center justify-between gap-6 shadow-sm"
+          >
+            <div
+              class="flex items-center gap-4 text-center sm:text-left flex-col sm:flex-row"
+            >
+              <div
+                class="w-14 h-14 rounded-2xl bg-brand-orange text-white flex items-center justify-center text-2xl shrink-0 shadow"
+              >
+                <i class="fa-solid fa-helmet-safety"></i>
+              </div>
+              <div>
+                <h3
+                  class="font-display text-xl sm:text-2xl font-bold text-gray-800"
+                >
+                  ¿Turnos rotativos en minería, salud o retail?
+                </h3>
+                <p class="text-gray-600 font-semibold text-sm sm:text-base">
+                  Tenemos un cupo flexible para tu familia en Rancagua •
+                  <span class="text-brand-orange font-bold"
+                    >Atención 24/7 todo el año</span
+                  >
+                </p>
+              </div>
+            </div>
+            <button
+              onclick="
+                openWhatsApp(
+                  'Hola Pasitos de Isa, trabajo por turnos rotativos y necesito información sobre cupos flexibles PASITOS 24/7.',
+                )
+              "
+              class="shrink-0 bg-brand-orange hover:bg-[#e06912] text-white font-display font-semibold px-7 py-3.5 rounded-full shadow-md hover:shadow-lg transition-all flex items-center gap-2.5"
+            >
+              <i class="fa-brands fa-whatsapp text-xl"></i>
+              <span>Consultar Cupo Flexible</span>
+            </button>
+          </div>
+
+          <!-- SECCIÓN 2 COLUMNAS: BIENVENIDOS + CONVENIOS DESTACADOS (Estilo referencia) -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <!-- Columna Izquierda: Bienvenidos a Pasitos de Isa -->
+            <div
+              class="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border border-gray-100 card-playful space-y-5"
+            >
+              <div class="flex items-center justify-between">
+                <h2
+                  class="font-display text-2xl sm:text-3xl font-bold text-gray-800"
+                >
+                  ¡Bienvenidos a
+                  <span class="text-brand-purple">Pasitos de Isa</span>!
+                </h2>
+                <span class="text-2xl">🌞</span>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 items-center">
+                <div class="rounded-2xl overflow-hidden aspect-[4/3] shadow-sm">
+                  <img
+                    src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=600&q=80"
+                    onerror="
+                      this.src =
+                        'https://placehold.co/600x450/EEF9E8/6BBF3B?text=Bienvenidos+a+Pasitos'
+                    "
+                    alt="Niños felices aprendiendo juntos"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <div class="space-y-3">
+                  <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
+                    Sabemos que la vida laboral en nuestra región exige horarios
+                    dinámicos. Por eso creamos en Rancagua un espacio donde cada
+                    niño recibe amor, educación y cuidado integral sin importar
+                    la hora.
+                  </p>
+                  <ul class="space-y-2 text-sm font-semibold text-gray-700">
+                    <li class="flex items-center gap-2">
+                      <i class="fa-solid fa-circle-check text-brand-green"></i>
+                      Monitoreo y protocolos seguros
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <i class="fa-solid fa-circle-check text-brand-green"></i>
+                      Habitaciones de descanso nocturno
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <i class="fa-solid fa-circle-check text-brand-green"></i>
+                      Alimentación nutritiva supervisada
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="pt-2">
+                <button
+                  onclick="navigateTo('nosotros')"
+                  class="bg-brand-green hover:bg-[#5ca830] text-white font-display font-semibold px-6 py-3 rounded-full shadow-sm transition-all inline-flex items-center gap-2"
+                >
+                  <span>Conocer Misión, Visión y Equipo</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Columna Derecha: Convenios y Alianzas Destacadas -->
+            <div
+              class="lg:col-span-5 bg-white rounded-3xl p-6 sm:p-8 border border-gray-100 card-playful space-y-5"
+            >
+              <div class="flex items-center justify-between">
+                <h2 class="font-display text-2xl font-bold text-gray-800">
+                  Convenios y Alianzas
+                </h2>
+                <span
+                  class="bg-brand-pinkLight text-brand-pink text-xs font-bold px-3 py-1 rounded-full"
+                  >O'Higgins</span
+                >
+              </div>
+
+              <div class="space-y-4">
+                <!-- Alianza Minería -->
+                <div
+                  class="flex items-center gap-4 p-3.5 rounded-2xl bg-orange-50/80 border border-orange-100"
+                >
+                  <div
+                    class="w-14 h-14 rounded-2xl bg-brand-orange text-white flex items-center justify-center text-2xl shrink-0"
+                  >
+                    <i class="fa-solid fa-mountain-sun"></i>
+                  </div>
+                  <div>
+                    <span class="text-xs font-bold text-brand-orange uppercase"
+                      >Sector Minería</span
+                    >
+                    <h4 class="font-display font-bold text-gray-800">
+                      Turnos 7x7, 4x4 y Faenas
+                    </h4>
+                    <p class="text-xs text-gray-600">
+                      Beneficios para trabajadores y contratistas de la región.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Alianza Salud -->
+                <div
+                  class="flex items-center gap-4 p-3.5 rounded-2xl bg-blue-50/80 border border-blue-100"
+                >
+                  <div
+                    class="w-14 h-14 rounded-2xl bg-brand-blue text-white flex items-center justify-center text-2xl shrink-0"
+                  >
+                    <i class="fa-solid fa-heart-pulse"></i>
+                  </div>
+                  <div>
+                    <span class="text-xs font-bold text-brand-blue uppercase"
+                      >Servicios de Salud</span
+                    >
+                    <h4 class="font-display font-bold text-gray-800">
+                      Hospitales y Clínicas 24h
+                    </h4>
+                    <p class="text-xs text-gray-600">
+                      Cobertura de turnos largos y noches para personal clínico.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Alianza Retail -->
+                <div
+                  class="flex items-center gap-4 p-3.5 rounded-2xl bg-purple-50/80 border border-purple-100"
+                >
+                  <div
+                    class="w-14 h-14 rounded-2xl bg-brand-purple text-white flex items-center justify-center text-2xl shrink-0"
+                  >
+                    <i class="fa-solid fa-store"></i>
+                  </div>
+                  <div>
+                    <span class="text-xs font-bold text-brand-purple uppercase"
+                      >Retail y Comercio</span
+                    >
+                    <h4 class="font-display font-bold text-gray-800">
+                      Horarios Extendidos y Mall
+                    </h4>
+                    <p class="text-xs text-gray-600">
+                      Atención vespertina y fines de semana garantizada.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <button
+                onclick="navigateTo('convenios')"
+                class="text-brand-purple hover:text-brand-pink font-display font-bold text-sm inline-flex items-center gap-1.5 transition-colors"
+              >
+                <span>Ver todos los convenios público-privados</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- TIRA HORIZONTAL: MOMENTOS CAPTURADOS (6 fotos alegres como en la referencia) -->
+          <div
+            class="rounded-[2rem] bg-gradient-to-r from-[#EEF6FF] via-[#F5F1FF] to-[#EEF9E8] p-6 sm:p-8 border border-blue-100"
+          >
+            <div class="text-center mb-6">
+              <h3
+                class="font-display text-2xl sm:text-3xl font-bold text-gray-800 inline-flex items-center gap-2"
+              >
+                <span class="text-brand-pink">❤</span> Momentos Capturados
+                <span class="text-brand-pink">❤</span>
+              </h3>
+              <p class="text-sm text-gray-600 font-semibold">
+                Sonrisas, juegos y aprendizaje en nuestras salas de Pasitos de
+                Isa • Rancagua
+              </p>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+              <div
+                onclick="navigateTo('instalaciones')"
+                class="cursor-pointer group rounded-2xl overflow-hidden border-4 border-white shadow-md aspect-square bg-white"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=400&q=80"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/400x400/FFB800/FFFFFF?text=Juegos'
+                  "
+                  alt="Bloques de colores"
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+              <div
+                onclick="navigateTo('instalaciones')"
+                class="cursor-pointer group rounded-2xl overflow-hidden border-4 border-white shadow-md aspect-square bg-white"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?auto=format&fit=crop&w=400&q=80"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/400x400/F0527F/FFFFFF?text=Pintura'
+                  "
+                  alt="Arte y pintura infantil"
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+              <div
+                onclick="navigateTo('instalaciones')"
+                class="cursor-pointer group rounded-2xl overflow-hidden border-4 border-white shadow-md aspect-square bg-white"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=400&q=80"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/400x400/6BBF3B/FFFFFF?text=Lectura'
+                  "
+                  alt="Cuentacuentos"
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+              <div
+                onclick="navigateTo('instalaciones')"
+                class="cursor-pointer group rounded-2xl overflow-hidden border-4 border-white shadow-md aspect-square bg-white"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1566004100631-35d015d6a491?auto=format&fit=crop&w=400&q=80"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/400x400/3B9AE1/FFFFFF?text=Patio'
+                  "
+                  alt="Juegos al aire libre"
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+              <div
+                onclick="navigateTo('instalaciones')"
+                class="cursor-pointer group rounded-2xl overflow-hidden border-4 border-white shadow-md aspect-square bg-white"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1544776193-352d25ca82cd?auto=format&fit=crop&w=400&q=80"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/400x400/7C5DFA/FFFFFF?text=Didactico'
+                  "
+                  alt="Material didáctico"
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+              <div
+                onclick="navigateTo('instalaciones')"
+                class="cursor-pointer group rounded-2xl overflow-hidden border-4 border-white shadow-md aspect-square bg-white"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=400&q=80"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/400x400/F47A20/FFFFFF?text=Cuidado'
+                  "
+                  alt="Cuidado con amor"
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+             VISTA 2: NOSOTROS (Misión, Visión, Bienestar y Equipo)
+        ================================================================== -->
+      <section id="view-nosotros" class="page-view">
+        <div
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-14 space-y-12"
+        >
+          <!-- Encabezado de Sección -->
+          <div class="text-center max-w-3xl mx-auto space-y-3">
+            <span
+              class="inline-block bg-brand-yellowLight text-brand-orange font-display font-bold px-4 py-1.5 rounded-full text-sm border border-brand-yellow"
+            >
+              Nuestra Esencia y Propósito
+            </span>
+            <h1
+              class="font-display text-3xl sm:text-5xl font-bold text-gray-800"
+            >
+              Amor, vocación y seguridad en cada paso
+            </h1>
+            <p class="text-gray-600 text-base sm:text-lg">
+              Conoce los pilares que hacen de <strong>Pasitos de Isa</strong> y
+              su programa <strong>Pasitos 24/7</strong> una propuesta pionera en
+              cuidado infantil flexible para las familias de Rancagua.
+            </p>
+          </div>
+
+          <!-- TARJETAS DESTACADAS: MISIÓN Y VISIÓN (Textos exactos) -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Tarjeta Misión -->
+            <div
+              class="card-playful rounded-[2rem] bg-gradient-to-br from-[#F3EFFF] to-white border-2 border-brand-purple/30 p-7 sm:p-9 relative overflow-hidden"
+            >
+              <div
+                class="w-14 h-14 rounded-2xl bg-brand-purple text-white flex items-center justify-center text-2xl mb-5 shadow-md"
+              >
+                <i class="fa-solid fa-compass"></i>
+              </div>
+              <h2
+                class="font-display text-2xl sm:text-3xl font-bold text-brand-purple mb-4"
+              >
+                Nuestra Misión • Pasitos de Isa
+              </h2>
+              <p class="text-gray-700 text-base sm:text-lg leading-relaxed">
+                En <strong>Pasitos de Isa</strong> nuestra misión es brindar un
+                servicio integral de cuidado infantil a niños desde los 6 meses
+                hasta los 5 años, en un entorno seguro, acogedor y familiar,
+                promoviendo su bienestar, aprendizaje y desarrollo mediante
+                experiencias educativas y atención personalizada. A través de
+                Pasitos 24/7, buscamos ofrecer alternativas de atención
+                flexibles que se adapten a las necesidades laborales y
+                familiares, entregando tranquilidad y confianza a cada familia.
+              </p>
+            </div>
+
+            <!-- Tarjeta Visión -->
+            <div
+              class="card-playful rounded-[2rem] bg-gradient-to-br from-[#FFF9E6] to-white border-2 border-brand-yellow/50 p-7 sm:p-9 relative overflow-hidden"
+            >
+              <div
+                class="w-14 h-14 rounded-2xl bg-brand-yellow text-gray-900 flex items-center justify-center text-2xl mb-5 shadow-md"
+              >
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <h2
+                class="font-display text-2xl sm:text-3xl font-bold text-brand-orange mb-4"
+              >
+                Nuestra Visión • Pasitos de Isa
+              </h2>
+              <p class="text-gray-700 text-base sm:text-lg leading-relaxed">
+                En <strong>Pasitos de Isa</strong> aspiramos a ser una guardería
+                infantil reconocida en Rancagua y sus alrededores por su
+                calidad, innovación y compromiso con el desarrollo integral de
+                los niños, convirtiéndonos en un referente en cuidado infantil
+                flexible mediante el modelo pasitos 24/7. Aspiramos a crecer de
+                manera sostenible, ampliar nuestra capacidad de atención,
+                incorporar nuevas tecnologías y establecer alianzas estratégicas
+                para transformar la experiencia del cuidado infantil.
+              </p>
+            </div>
+          </div>
+
+          <!-- COMPROMISO CON EL BIENESTAR INFANTIL -->
+          <div
+            class="rounded-[2rem] bg-brand-greenLight/60 border-2 border-brand-green/30 p-7 sm:p-10 space-y-8"
+          >
+            <div class="text-center max-w-2xl mx-auto">
+              <h2
+                class="font-display text-2xl sm:text-4xl font-bold text-gray-800"
+              >
+                Compromiso con el
+                <span class="text-brand-green">Bienestar Infantil</span>
+              </h2>
+              <p class="text-gray-600 mt-2">
+                Cada protocolo está diseñado para proteger la salud física,
+                emocional y el descanso de tus hijos las 24 horas.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div
+                class="bg-white rounded-3xl p-6 shadow-sm border border-green-100 space-y-3"
+              >
+                <div
+                  class="w-12 h-12 rounded-2xl bg-brand-green text-white flex items-center justify-center text-xl"
+                >
+                  <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h3 class="font-display text-xl font-bold text-gray-800">
+                  Seguridad Activa
+                </h3>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                  Control de acceso biométrico, cámaras en áreas comunes, pisos
+                  amortiguadores y protocolos de emergencia certificados.
+                </p>
+              </div>
+
+              <div
+                class="bg-white rounded-3xl p-6 shadow-sm border border-green-100 space-y-3"
+              >
+                <div
+                  class="w-12 h-12 rounded-2xl bg-brand-orange text-white flex items-center justify-center text-xl"
+                >
+                  <i class="fa-solid fa-apple-whole"></i>
+                </div>
+                <h3 class="font-display text-xl font-bold text-gray-800">
+                  Nutrición Saludable
+                </h3>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                  Minutas diseñadas por nutricionista infantil adaptadas a cada
+                  etapa, alergias alimentarias y horarios de cena/desayuno.
+                </p>
+              </div>
+
+              <div
+                class="bg-white rounded-3xl p-6 shadow-sm border border-green-100 space-y-3"
+              >
+                <div
+                  class="w-12 h-12 rounded-2xl bg-brand-purple text-white flex items-center justify-center text-xl"
+                >
+                  <i class="fa-solid fa-moon"></i>
+                </div>
+                <h3 class="font-display text-xl font-bold text-gray-800">
+                  Contención Nocturna
+                </h3>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                  Rutinas cálidas de sueño, cuentos antes de dormir y
+                  acompañamiento afectuoso para niños que pernoctan con
+                  nosotros.
+                </p>
+              </div>
+
+              <div
+                class="bg-white rounded-3xl p-6 shadow-sm border border-green-100 space-y-3"
+              >
+                <div
+                  class="w-12 h-12 rounded-2xl bg-brand-blue text-white flex items-center justify-center text-xl"
+                >
+                  <i class="fa-solid fa-mobile-screen-button"></i>
+                </div>
+                <h3 class="font-display text-xl font-bold text-gray-800">
+                  Bitácora a Padres
+                </h3>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                  Reporte en tiempo real de alimentación, siestas, actividades y
+                  estado de ánimo directo al celular de mamá y papá.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- EQUIPO DE TRABAJO MULTIDISCIPLINARIO -->
+          <div class="space-y-8">
+            <div class="text-center max-w-2xl mx-auto">
+              <h2
+                class="font-display text-2xl sm:text-4xl font-bold text-gray-800"
+              >
+                Nuestro Equipo de Trabajo
+              </h2>
+              <p class="text-gray-600 mt-2">
+                Profesionales vocacionales organizados en turnos rotativos para
+                garantizar energía, paciencia y cariño en cada jornada.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <!-- Miembro 1 -->
+              <div
+                class="card-playful bg-white rounded-3xl overflow-hidden border border-purple-100 text-center"
+              >
+                <div class="h-56 overflow-hidden bg-purple-100">
+                  <img
+                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80"
+                    onerror="
+                      this.src =
+                        'https://placehold.co/500x500/7C5DFA/FFFFFF?text=Directora'
+                    "
+                    alt="Carolina Morales - Directora"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <div class="p-5 space-y-1.5">
+                  <span
+                    class="inline-block bg-brand-purpleLight text-brand-purple text-xs font-bold px-3 py-1 rounded-full"
+                    >Directora Pedagógica</span
+                  >
+                  <h3 class="font-display text-xl font-bold text-gray-800">
+                    Carolina Morales
+                  </h3>
+                  <p class="text-xs text-gray-500 font-semibold">
+                    Educadora de Párvulos • 12 años exp.
+                  </p>
+                  <p class="text-sm text-gray-600 pt-2">
+                    Lidera el proyecto educativo y la coordinación de familias
+                    en Rancagua.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Miembro 2 -->
+              <div
+                class="card-playful bg-white rounded-3xl overflow-hidden border border-pink-100 text-center"
+              >
+                <div class="h-56 overflow-hidden bg-pink-100">
+                  <img
+                    src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=500&q=80"
+                    onerror="
+                      this.src =
+                        'https://placehold.co/500x500/F0527F/FFFFFF?text=TENS+Nocturna'
+                    "
+                    alt="Valentina Rojas - Coordinadora Nocturna TENS"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <div class="p-5 space-y-1.5">
+                  <span
+                    class="inline-block bg-brand-pinkLight text-brand-pink text-xs font-bold px-3 py-1 rounded-full"
+                    >TENS • Turno Nocturno</span
+                  >
+                  <h3 class="font-display text-xl font-bold text-gray-800">
+                    Valentina Rojas
+                  </h3>
+                  <p class="text-xs text-gray-500 font-semibold">
+                    Técnico en Enfermería Pediátrica
+                  </p>
+                  <p class="text-sm text-gray-600 pt-2">
+                    Encargada de monitoreo de salud, lactario y descanso seguro
+                    durante la noche.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Miembro 3 -->
+              <div
+                class="card-playful bg-white rounded-3xl overflow-hidden border border-green-100 text-center"
+              >
+                <div class="h-56 overflow-hidden bg-green-100">
+                  <img
+                    src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=500&q=80"
+                    onerror="
+                      this.src =
+                        'https://placehold.co/500x500/6BBF3B/FFFFFF?text=Estimulacion'
+                    "
+                    alt="Camila Soto - Especialista Estimulación"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <div class="p-5 space-y-1.5">
+                  <span
+                    class="inline-block bg-brand-greenLight text-brand-green text-xs font-bold px-3 py-1 rounded-full"
+                    >Estimulación Temprana</span
+                  >
+                  <h3 class="font-display text-xl font-bold text-gray-800">
+                    Camila Soto
+                  </h3>
+                  <p class="text-xs text-gray-500 font-semibold">
+                    Educadora Diferencial y Psicomotricista
+                  </p>
+                  <p class="text-sm text-gray-600 pt-2">
+                    Diseña talleres sensoriales y motores para niños de 6 meses
+                    a 5 años.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Miembro 4 -->
+              <div
+                class="card-playful bg-white rounded-3xl overflow-hidden border border-blue-100 text-center"
+              >
+                <div class="h-56 overflow-hidden bg-blue-100">
+                  <img
+                    src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=500&q=80"
+                    onerror="
+                      this.src =
+                        'https://placehold.co/500x500/3B9AE1/FFFFFF?text=Nutricion'
+                    "
+                    alt="Fernanda Díaz - Nutricionista Infantil"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <div class="p-5 space-y-1.5">
+                  <span
+                    class="inline-block bg-brand-blueLight text-brand-blue text-xs font-bold px-3 py-1 rounded-full"
+                    >Nutrición y Bienestar</span
+                  >
+                  <h3 class="font-display text-xl font-bold text-gray-800">
+                    Fernanda Díaz
+                  </h3>
+                  <p class="text-xs text-gray-500 font-semibold">
+                    Nutricionista Materno-Infantil
+                  </p>
+                  <p class="text-sm text-gray-600 pt-2">
+                    Supervisa la alimentación balanceada en jornadas diurnas,
+                    cenas y colaciones.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+             VISTA 3: SERVICIOS 24/7 (Jornadas + Simulador Interactivo)
+        ================================================================== -->
+      <section id="view-servicios" class="page-view">
+        <div
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-14 space-y-12"
+        >
+          <!-- Header -->
+          <div class="text-center max-w-3xl mx-auto space-y-3">
+            <span
+              class="inline-block bg-brand-greenLight text-brand-green font-display font-bold px-4 py-1.5 rounded-full text-sm border border-brand-green/30"
+            >
+              Innovación en Cuidado Infantil • Rancagua
+            </span>
+            <h1
+              class="font-display text-3xl sm:text-5xl font-bold text-gray-800"
+            >
+              Atención las <span class="text-brand-purple">24 horas</span>, los
+              <span class="text-brand-orange">7 días</span> de la semana
+            </h1>
+            <p class="text-gray-600 text-base sm:text-lg">
+              Porque no todos los trabajos terminan a las 18:00 hrs. En
+              <strong>Pasitos de Isa</strong>, nuestro modelo
+              <strong>pasitos 24/7</strong> cubre turnos diurnos, vespertinos,
+              nocturnos y fines de semana con personal de relevo descansado.
+            </p>
+          </div>
+
+          <!-- 4 JORNADAS DE ATENCIÓN -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Jornada Diurna -->
+            <div
+              class="card-playful bg-white rounded-3xl p-6 border-2 border-yellow-200 flex flex-col justify-between"
+            >
+              <div class="space-y-3">
+                <div
+                  class="w-12 h-12 rounded-2xl bg-brand-yellow text-gray-900 flex items-center justify-center text-xl"
+                >
+                  <i class="fa-solid fa-sun"></i>
+                </div>
+                <span class="text-xs font-bold text-brand-orange uppercase"
+                  >07:30 a 19:30 hrs</span
+                >
+                <h3 class="font-display text-2xl font-bold text-gray-800">
+                  Jornada Diurna
+                </h3>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                  Talleres pedagógicos, juegos al aire libre, estimulación
+                  temprana, almuerzo y colaciones saludables.
+                </p>
+              </div>
+              <div
+                class="pt-4 mt-4 border-t border-gray-100 text-xs font-bold text-gray-500"
+              >
+                Ideal para horario administrativo y escolar
+              </div>
+            </div>
+
+            <!-- Turno Vespertino -->
+            <div
+              class="card-playful bg-white rounded-3xl p-6 border-2 border-orange-200 flex flex-col justify-between"
+            >
+              <div class="space-y-3">
+                <div
+                  class="w-12 h-12 rounded-2xl bg-brand-orange text-white flex items-center justify-center text-xl"
+                >
+                  <i class="fa-solid fa-cloud-sun"></i>
+                </div>
+                <span class="text-xs font-bold text-brand-orange uppercase"
+                  >14:00 a 23:00 hrs</span
+                >
+                <h3 class="font-display text-2xl font-bold text-gray-800">
+                  Turno Vespertino
+                </h3>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                  Actividades recreativas tranquilas, cena nutritiva, higiene
+                  nocturna y preparación para el descanso.
+                </p>
+              </div>
+              <div
+                class="pt-4 mt-4 border-t border-gray-100 text-xs font-bold text-gray-500"
+              >
+                Pensado para comercio, retail y turnos tarde
+              </div>
+            </div>
+
+            <!-- Cuidado Nocturno -->
+            <div
+              class="card-playful bg-gradient-to-b from-[#2B2640] to-[#3C3559] text-white rounded-3xl p-6 border-2 border-brand-purple flex flex-col justify-between"
+            >
+              <div class="space-y-3">
+                <div
+                  class="w-12 h-12 rounded-2xl bg-brand-purple text-white flex items-center justify-center text-xl"
+                >
+                  <i class="fa-solid fa-moon"></i>
+                </div>
+                <span class="text-xs font-bold text-brand-yellow uppercase"
+                  >20:00 a 08:30 hrs</span
+                >
+                <h3 class="font-display text-2xl font-bold">
+                  Cuidado Nocturno
+                </h3>
+                <p class="text-sm text-purple-100 leading-relaxed">
+                  Habitaciones climatizadas con cunas y camas individuales,
+                  cuento nocturno, TENS de turno permanente y desayuno.
+                </p>
+              </div>
+              <div
+                class="pt-4 mt-4 border-t border-white/15 text-xs font-bold text-brand-yellow"
+              >
+                Especial para turnos de noche en Salud y Minería
+              </div>
+            </div>
+
+            <!-- Fines de Semana y Festivos -->
+            <div
+              class="card-playful bg-white rounded-3xl p-6 border-2 border-blue-200 flex flex-col justify-between"
+            >
+              <div class="space-y-3">
+                <div
+                  class="w-12 h-12 rounded-2xl bg-brand-blue text-white flex items-center justify-center text-xl"
+                >
+                  <i class="fa-solid fa-calendar-week"></i>
+                </div>
+                <span class="text-xs font-bold text-brand-blue uppercase"
+                  >Sábado, Domingo y Festivos</span
+                >
+                <h3 class="font-display text-2xl font-bold text-gray-800">
+                  Sábados y Domingos
+                </h3>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                  Cobertura continua los 365 días del año. Bloques flexibles por
+                  horas, media jornada o jornada completa.
+                </p>
+              </div>
+              <div
+                class="pt-4 mt-4 border-t border-gray-100 text-xs font-bold text-gray-500"
+              >
+                Turnos 7x7, 4x4 y comercio fin de semana
+              </div>
+            </div>
+          </div>
+
+          <!-- SIMULADOR INTERACTIVO DE MODALIDAD PARA PADRES -->
+          <div
+            class="rounded-[2.2rem] bg-gradient-to-br from-[#F3EFFF] via-white to-[#FFF9E6] border-2 border-brand-purple/25 p-6 sm:p-10 shadow-md"
+          >
+            <div class="max-w-4xl mx-auto space-y-8">
+              <div class="text-center space-y-2">
+                <span
+                  class="bg-brand-purple text-white text-xs font-bold px-3.5 py-1 rounded-full uppercase tracking-wider"
+                  >Herramienta Interactiva</span
+                >
+                <h2
+                  class="font-display text-2xl sm:text-4xl font-bold text-gray-800"
+                >
+                  Simulador de Plan Ideal
+                  <span class="text-brand-purple">Pasitos de Isa</span>
+                </h2>
+                <p class="text-gray-600 text-sm sm:text-base">
+                  Selecciona la edad de tu hijo/a y tu modalidad de trabajo para
+                  recomendarte el programa perfecto.
+                </p>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Selector Edad -->
+                <div
+                  class="bg-white p-5 rounded-3xl border border-purple-100 space-y-3"
+                >
+                  <label
+                    class="font-display font-bold text-lg text-gray-800 flex items-center gap-2"
+                  >
+                    <span
+                      class="w-7 h-7 rounded-full bg-brand-yellow text-gray-900 text-sm flex items-center justify-center"
+                      >1</span
+                    >
+                    Edad de tu pequeño/a
+                  </label>
+                  <div class="grid grid-cols-1 gap-2.5" id="sim-edad-group">
+                    <button
+                      type="button"
+                      onclick="selectSimEdad('Sala Cuna (6 meses a 2 años)')"
+                      class="sim-edad-btn active text-left px-4 py-3 rounded-2xl border-2 border-brand-purple bg-brand-purpleLight font-bold text-brand-purple text-sm transition-all flex items-center justify-between"
+                    >
+                      <span>👶 Sala Cuna (6 meses a 2 años)</span>
+                      <i class="fa-solid fa-circle-check"></i>
+                    </button>
+                    <button
+                      type="button"
+                      onclick="selectSimEdad('Nivel Medio (2 a 4 años)')"
+                      class="sim-edad-btn text-left px-4 py-3 rounded-2xl border-2 border-gray-100 hover:border-purple-200 font-bold text-gray-700 text-sm transition-all flex items-center justify-between"
+                    >
+                      <span>🧸 Nivel Medio (2 a 4 años)</span>
+                      <i class="fa-regular fa-circle text-gray-300"></i>
+                    </button>
+                    <button
+                      type="button"
+                      onclick="selectSimEdad('Nivel Transición (4 a 5 años)')"
+                      class="sim-edad-btn text-left px-4 py-3 rounded-2xl border-2 border-gray-100 hover:border-purple-200 font-bold text-gray-700 text-sm transition-all flex items-center justify-between"
+                    >
+                      <span>🎨 Nivel Transición (4 a 5 años)</span>
+                      <i class="fa-regular fa-circle text-gray-300"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Selector Jornada Laboral -->
+                <div
+                  class="bg-white p-5 rounded-3xl border border-purple-100 space-y-3"
+                >
+                  <label
+                    class="font-display font-bold text-lg text-gray-800 flex items-center gap-2"
+                  >
+                    <span
+                      class="w-7 h-7 rounded-full bg-brand-green text-white text-sm flex items-center justify-center"
+                      >2</span
+                    >
+                    Tu jornada laboral en Rancagua
+                  </label>
+                  <div class="grid grid-cols-1 gap-2.5" id="sim-jornada-group">
+                    <button
+                      type="button"
+                      onclick="
+                        selectSimJornada(
+                          'Turnos Rotativos Minería / Salud (Día y Noche)',
+                        )
+                      "
+                      class="sim-jornada-btn active text-left px-4 py-3 rounded-2xl border-2 border-brand-green bg-brand-greenLight font-bold text-gray-800 text-sm transition-all flex items-center justify-between"
+                    >
+                      <span>⛏️🏥 Turnos Rotativos Minería / Salud</span>
+                      <i class="fa-solid fa-circle-check text-brand-green"></i>
+                    </button>
+                    <button
+                      type="button"
+                      onclick="
+                        selectSimJornada(
+                          'Comercio / Retail (Vespertino y Fines de Semana)',
+                        )
+                      "
+                      class="sim-jornada-btn text-left px-4 py-3 rounded-2xl border-2 border-gray-100 hover:border-green-200 font-bold text-gray-700 text-sm transition-all flex items-center justify-between"
+                    >
+                      <span>🛍️ Comercio / Retail (Tarde y Fin de Semana)</span>
+                      <i class="fa-regular fa-circle text-gray-300"></i>
+                    </button>
+                    <button
+                      type="button"
+                      onclick="
+                        selectSimJornada(
+                          'Horario Oficina / Diurno Lunes a Viernes',
+                        )
+                      "
+                      class="sim-jornada-btn text-left px-4 py-3 rounded-2xl border-2 border-gray-100 hover:border-green-200 font-bold text-gray-700 text-sm transition-all flex items-center justify-between"
+                    >
+                      <span>💼 Horario Oficina (Diurno Lunes a Viernes)</span>
+                      <i class="fa-regular fa-circle text-gray-300"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Resultado Dinámico del Simulador -->
+              <div
+                class="bg-white rounded-3xl p-6 sm:p-8 border-2 border-brand-yellow shadow-sm flex flex-col lg:flex-row items-center justify-between gap-6"
+              >
+                <div class="space-y-2 text-center lg:text-left">
+                  <span
+                    class="text-xs font-bold uppercase tracking-wider text-brand-orange"
+                    >Plan Recomendado para tu Familia</span
+                  >
+                  <h3
+                    id="sim-result-title"
+                    class="font-display text-2xl font-bold text-gray-800"
+                  >
+                    Plan Flex 24/7 Turnos Rotativos + Sala Cuna
+                  </h3>
+                  <p
+                    id="sim-result-desc"
+                    class="text-sm sm:text-base text-gray-600 max-w-2xl"
+                  >
+                    Incluye cupo garantizado en turnos diurnos, noches con TENS
+                    pediátrica, fines de semana según tu rol de turno,
+                    alimentación completa y bitácora digital.
+                  </p>
+                </div>
+                <button
+                  onclick="sendSimulatorWhatsApp()"
+                  class="shrink-0 bg-[#25D366] hover:bg-[#1EBE5D] text-white font-display font-semibold px-7 py-4 rounded-full shadow-lg transition-all transform hover:scale-105 flex items-center gap-2.5"
+                >
+                  <i class="fa-brands fa-whatsapp text-xl"></i>
+                  <span>Cotizar este Plan</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+             VISTA 4: INSTALACIONES (Galería Filtrable + Lightbox)
+        ================================================================== -->
+      <section id="view-instalaciones" class="page-view">
+        <div
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-14 space-y-10"
+        >
+          <!-- Header -->
+          <div class="text-center max-w-3xl mx-auto space-y-3">
+            <span
+              class="inline-block bg-brand-blueLight text-brand-blue font-display font-bold px-4 py-1.5 rounded-full text-sm border border-brand-blue/30"
+            >
+              Espacios Pensados para Ellos
+            </span>
+            <h1
+              class="font-display text-3xl sm:text-5xl font-bold text-gray-800"
+            >
+              Nuestras Instalaciones en Rancagua
+            </h1>
+            <p class="text-gray-600 text-base sm:text-lg">
+              Ambientes luminosos, climatizados, con mobiliario ergonómico
+              redondeado y zonas diferenciadas para el juego activo y el
+              descanso profundo.
+            </p>
+          </div>
+
+          <!-- Filtros por Espacio -->
+          <div
+            class="flex flex-wrap items-center justify-center gap-2.5"
+            id="gallery-filters"
+          >
+            <button
+              onclick="filterGallery('todos', this)"
+              class="filter-btn active px-5 py-2.5 rounded-full font-display font-semibold text-sm bg-brand-purple text-white shadow-sm transition-all"
+            >
+              Todos los Espacios
+            </button>
+            <button
+              onclick="filterGallery('estimulacion', this)"
+              class="filter-btn px-5 py-2.5 rounded-full font-display font-semibold text-sm bg-gray-100 hover:bg-purple-50 text-gray-700 transition-all"
+            >
+              Salas de Estimulación
+            </button>
+            <button
+              onclick="filterGallery('descanso', this)"
+              class="filter-btn px-5 py-2.5 rounded-full font-display font-semibold text-sm bg-gray-100 hover:bg-purple-50 text-gray-700 transition-all"
+            >
+              Zona de Descanso Nocturno
+            </button>
+            <button
+              onclick="filterGallery('patio', this)"
+              class="filter-btn px-5 py-2.5 rounded-full font-display font-semibold text-sm bg-gray-100 hover:bg-purple-50 text-gray-700 transition-all"
+            >
+              Patio de Juegos Seguro
+            </button>
+            <button
+              onclick="filterGallery('comedor', this)"
+              class="filter-btn px-5 py-2.5 rounded-full font-display font-semibold text-sm bg-gray-100 hover:bg-purple-50 text-gray-700 transition-all"
+            >
+              Comedor y Lactario
+            </button>
+          </div>
+
+          <!-- Grid Fotográfico de Instalaciones -->
+          <div
+            id="gallery-grid"
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7"
+          >
+            <!-- Foto 1: Salas de Estimulación -->
+            <div
+              data-category="estimulacion"
+              onclick="openLightbox(this)"
+              class="gallery-item card-playful cursor-pointer bg-white rounded-3xl overflow-hidden border border-gray-100 group"
+            >
+              <div class="relative aspect-[4/3] overflow-hidden bg-purple-50">
+                <img
+                  src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=800&q=80"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/800x600/7C5DFA/FFFFFF?text=Sala+Estimulacion+Sensorial'
+                  "
+                  alt="Sala de Estimulación Sensorial"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <span
+                  class="absolute top-3 left-3 bg-brand-purple text-white text-xs font-bold px-3 py-1 rounded-full shadow"
+                  >Salas de Estimulación</span
+                >
+                <span
+                  class="absolute bottom-3 right-3 w-9 h-9 rounded-full bg-white/90 text-gray-800 flex items-center justify-center shadow"
+                  ><i class="fa-solid fa-expand"></i
+                ></span>
+              </div>
+              <div class="p-5 space-y-1.5">
+                <h3 class="font-display text-xl font-bold text-gray-800">
+                  Sala Arcoíris de Juego y Arte
+                </h3>
+                <p class="text-sm text-gray-600">
+                  Material didáctico certificado no tóxico, pisos de goma EVA de
+                  alta densidad y luz natural controlada.
+                </p>
+              </div>
+            </div>
+
+            <!-- Foto 2: Zona de Descanso Nocturno -->
+            <div
+              data-category="descanso"
+              onclick="openLightbox(this)"
+              class="gallery-item card-playful cursor-pointer bg-white rounded-3xl overflow-hidden border border-gray-100 group"
+            >
+              <div class="relative aspect-[4/3] overflow-hidden bg-indigo-50">
+                <img
+                  src="https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=800&q=80"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/800x600/3C3559/FFFFFF?text=Dormitorio+Nocturno'
+                  "
+                  alt="Dormitorio Nocturno Climatizado"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <span
+                  class="absolute top-3 left-3 bg-indigo-700 text-white text-xs font-bold px-3 py-1 rounded-full shadow"
+                  >Zona de Descanso Nocturno</span
+                >
+                <span
+                  class="absolute bottom-3 right-3 w-9 h-9 rounded-full bg-white/90 text-gray-800 flex items-center justify-center shadow"
+                  ><i class="fa-solid fa-expand"></i
+                ></span>
+              </div>
+              <div class="p-5 space-y-1.5">
+                <h3 class="font-display text-xl font-bold text-gray-800">
+                  Dormitorio Estrellitas 24/7
+                </h3>
+                <p class="text-sm text-gray-600">
+                  Cunas y camas individuales separadas por edad, climatización
+                  silenciosa, luz tenue y supervisión constante.
+                </p>
+              </div>
+            </div>
+
+            <!-- Foto 3: Patio de Juegos Seguro -->
+            <div
+              data-category="patio"
+              onclick="openLightbox(this)"
+              class="gallery-item card-playful cursor-pointer bg-white rounded-3xl overflow-hidden border border-gray-100 group"
+            >
+              <div class="relative aspect-[4/3] overflow-hidden bg-green-50">
+                <img
+                  src="https://images.unsplash.com/photo-1566004100631-35d015d6a491?auto=format&fit=crop&w=800&q=80"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/800x600/6BBF3B/FFFFFF?text=Patio+de+Juegos'
+                  "
+                  alt="Patio Exterior de Psicomotricidad"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <span
+                  class="absolute top-3 left-3 bg-brand-green text-white text-xs font-bold px-3 py-1 rounded-full shadow"
+                  >Patio de Juegos Seguro</span
+                >
+                <span
+                  class="absolute bottom-3 right-3 w-9 h-9 rounded-full bg-white/90 text-gray-800 flex items-center justify-center shadow"
+                  ><i class="fa-solid fa-expand"></i
+                ></span>
+              </div>
+              <div class="p-5 space-y-1.5">
+                <h3 class="font-display text-xl font-bold text-gray-800">
+                  Patio Verde de Psicomotricidad
+                </h3>
+                <p class="text-sm text-gray-600">
+                  Superficie blanda anti-caídas, juegos modulares seguros y
+                  zonas sombreadas para disfrutar al aire libre.
+                </p>
+              </div>
+            </div>
+
+            <!-- Foto 4: Comedor y Lactario -->
+            <div
+              data-category="comedor"
+              onclick="openLightbox(this)"
+              class="gallery-item card-playful cursor-pointer bg-white rounded-3xl overflow-hidden border border-gray-100 group"
+            >
+              <div class="relative aspect-[4/3] overflow-hidden bg-orange-50">
+                <img
+                  src="https://images.unsplash.com/photo-1544776193-352d25ca82cd?auto=format&fit=crop&w=800&q=80"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/800x600/F47A20/FFFFFF?text=Comedor+y+Lactario'
+                  "
+                  alt="Comedor Infantil y Sala de Lactancia"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <span
+                  class="absolute top-3 left-3 bg-brand-orange text-white text-xs font-bold px-3 py-1 rounded-full shadow"
+                  >Comedor y Lactario</span
+                >
+                <span
+                  class="absolute bottom-3 right-3 w-9 h-9 rounded-full bg-white/90 text-gray-800 flex items-center justify-center shadow"
+                  ><i class="fa-solid fa-expand"></i
+                ></span>
+              </div>
+              <div class="p-5 space-y-1.5">
+                <h3 class="font-display text-xl font-bold text-gray-800">
+                  Comedor Nutritivo y Lactario
+                </h3>
+                <p class="text-sm text-gray-600">
+                  Sillas ergonómicas adaptadas, esterilización certificada de
+                  mamaderas y espacio cómodo para lactancia materna.
+                </p>
+              </div>
+            </div>
+
+            <!-- Foto 5: Salas de Estimulación 2 -->
+            <div
+              data-category="estimulacion"
+              onclick="openLightbox(this)"
+              class="gallery-item card-playful cursor-pointer bg-white rounded-3xl overflow-hidden border border-gray-100 group"
+            >
+              <div class="relative aspect-[4/3] overflow-hidden bg-blue-50">
+                <img
+                  src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=800&q=80"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/800x600/3B9AE1/FFFFFF?text=Rincon+de+Lectura'
+                  "
+                  alt="Rincón de Lectura y Cuentacuentos"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <span
+                  class="absolute top-3 left-3 bg-brand-purple text-white text-xs font-bold px-3 py-1 rounded-full shadow"
+                  >Salas de Estimulación</span
+                >
+                <span
+                  class="absolute bottom-3 right-3 w-9 h-9 rounded-full bg-white/90 text-gray-800 flex items-center justify-center shadow"
+                  ><i class="fa-solid fa-expand"></i
+                ></span>
+              </div>
+              <div class="p-5 space-y-1.5">
+                <h3 class="font-display text-xl font-bold text-gray-800">
+                  Rincón de Cuentos y Música
+                </h3>
+                <p class="text-sm text-gray-600">
+                  Biblioteca infantil a su altura, cojines hipoalergénicos e
+                  instrumentos musicales para estimular el lenguaje.
+                </p>
+              </div>
+            </div>
+
+            <!-- Foto 6: Zona de Descanso 2 -->
+            <div
+              data-category="descanso"
+              onclick="openLightbox(this)"
+              class="gallery-item card-playful cursor-pointer bg-white rounded-3xl overflow-hidden border border-gray-100 group"
+            >
+              <div class="relative aspect-[4/3] overflow-hidden bg-pink-50">
+                <img
+                  src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=800&q=80"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/800x600/F0527F/FFFFFF?text=Sala+Cuna+Apego'
+                  "
+                  alt="Sala de Apego y Siesta Sala Cuna"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <span
+                  class="absolute top-3 left-3 bg-indigo-700 text-white text-xs font-bold px-3 py-1 rounded-full shadow"
+                  >Zona de Descanso Nocturno</span
+                >
+                <span
+                  class="absolute bottom-3 right-3 w-9 h-9 rounded-full bg-white/90 text-gray-800 flex items-center justify-center shadow"
+                  ><i class="fa-solid fa-expand"></i
+                ></span>
+              </div>
+              <div class="p-5 space-y-1.5">
+                <h3 class="font-display text-xl font-bold text-gray-800">
+                  Sala de Apego Sala Cuna
+                </h3>
+                <p class="text-sm text-gray-600">
+                  Acústica aislada del área de juegos para asegurar siestas
+                  reparadoras en cualquier bloque horario del día o la noche.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+             VISTA 5: CONVENIOS (Alianzas Público-Privadas en O'Higgins)
+        ================================================================== -->
+      <section id="view-convenios" class="page-view">
+        <div
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-14 space-y-12"
+        >
+          <!-- Header -->
+          <div class="text-center max-w-3xl mx-auto space-y-3">
+            <span
+              class="inline-block bg-brand-pinkLight text-brand-pink font-display font-bold px-4 py-1.5 rounded-full text-sm border border-brand-pink/30"
+            >
+              Alianzas Estratégicas Público-Privadas
+            </span>
+            <h1
+              class="font-display text-3xl sm:text-5xl font-bold text-gray-800"
+            >
+              Convenios con Empresas e Instituciones
+            </h1>
+            <p class="text-gray-600 text-base sm:text-lg">
+              En <strong>Pasitos de Isa</strong> trabajamos junto a empresas e
+              instituciones públicas de Rancagua y la Región de O'Higgins para
+              resolver la conciliación trabajo-familia en jornadas continuas.
+            </p>
+          </div>
+
+          <!-- 4 SECTORES ESTRATÉGICOS -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-7">
+            <!-- Sector Minería -->
+            <div
+              class="card-playful bg-white rounded-[2rem] p-7 border-2 border-orange-100 flex flex-col sm:flex-row gap-5 items-start"
+            >
+              <div
+                class="w-16 h-16 rounded-2xl bg-brand-orange text-white flex items-center justify-center text-3xl shrink-0 shadow"
+              >
+                <i class="fa-solid fa-helmet-safety"></i>
+              </div>
+              <div class="space-y-2">
+                <span
+                  class="text-xs font-bold uppercase text-brand-orange tracking-wider"
+                  >Gran Minería y Contratistas</span
+                >
+                <h3 class="font-display text-2xl font-bold text-gray-800">
+                  Sector Minería (Turnos 7x7 y 4x4)
+                </h3>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                  Soluciones reales para padres y madres que suben a faena o
+                  cumplen turnos de subida/bajada en Rancagua. Cupos
+                  preferenciales y planes flexibles por rol.
+                </p>
+                <div class="pt-2 flex flex-wrap gap-2">
+                  <span
+                    class="bg-orange-50 text-brand-orange text-xs font-bold px-3 py-1 rounded-full"
+                    >Descuento corporativo</span
+                  >
+                  <span
+                    class="bg-orange-50 text-brand-orange text-xs font-bold px-3 py-1 rounded-full"
+                    >Cobertura fines de semana</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Servicios de Salud -->
+            <div
+              class="card-playful bg-white rounded-[2rem] p-7 border-2 border-blue-100 flex flex-col sm:flex-row gap-5 items-start"
+            >
+              <div
+                class="w-16 h-16 rounded-2xl bg-brand-blue text-white flex items-center justify-center text-3xl shrink-0 shadow"
+              >
+                <i class="fa-solid fa-hospital"></i>
+              </div>
+              <div class="space-y-2">
+                <span
+                  class="text-xs font-bold uppercase text-brand-blue tracking-wider"
+                  >Hospitales, Clínicas y CESFAM</span
+                >
+                <h3 class="font-display text-2xl font-bold text-gray-800">
+                  Servicios de Salud 24 Horas
+                </h3>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                  Diseñado para médicos, enfermeras, matronas, TENS y personal
+                  administrativo con cuartos turnos, turnos de noche y guardias
+                  de urgencia.
+                </p>
+                <div class="pt-2 flex flex-wrap gap-2">
+                  <span
+                    class="bg-blue-50 text-brand-blue text-xs font-bold px-3 py-1 rounded-full"
+                    >Pernoctación nocturna</span
+                  >
+                  <span
+                    class="bg-blue-50 text-brand-blue text-xs font-bold px-3 py-1 rounded-full"
+                    >Extensión por urgencia</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Sector Retail y Comercio -->
+            <div
+              class="card-playful bg-white rounded-[2rem] p-7 border-2 border-purple-100 flex flex-col sm:flex-row gap-5 items-start"
+            >
+              <div
+                class="w-16 h-16 rounded-2xl bg-brand-purple text-white flex items-center justify-center text-3xl shrink-0 shadow"
+              >
+                <i class="fa-solid fa-bag-shopping"></i>
+              </div>
+              <div class="space-y-2">
+                <span
+                  class="text-xs font-bold uppercase text-brand-purple tracking-wider"
+                  >Centros Comerciales y Supermercados</span
+                >
+                <h3 class="font-display text-2xl font-bold text-gray-800">
+                  Sector Retail y Servicios
+                </h3>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                  Atención hasta las 23:00 hrs y cobertura total sábados,
+                  domingos y fechas peak del comercio en Rancagua, brindando
+                  seguridad a tus hijos mientras trabajas.
+                </p>
+                <div class="pt-2 flex flex-wrap gap-2">
+                  <span
+                    class="bg-purple-50 text-brand-purple text-xs font-bold px-3 py-1 rounded-full"
+                    >Jornada vespertina</span
+                  >
+                  <span
+                    class="bg-purple-50 text-brand-purple text-xs font-bold px-3 py-1 rounded-full"
+                    >Cumplimiento Ley Sala Cuna</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Alianzas Público-Privadas -->
+            <div
+              class="card-playful bg-white rounded-[2rem] p-7 border-2 border-green-100 flex flex-col sm:flex-row gap-5 items-start"
+            >
+              <div
+                class="w-16 h-16 rounded-2xl bg-brand-green text-white flex items-center justify-center text-3xl shrink-0 shadow"
+              >
+                <i class="fa-solid fa-landmark"></i>
+              </div>
+              <div class="space-y-2">
+                <span
+                  class="text-xs font-bold uppercase text-brand-green tracking-wider"
+                  >Municipalidades y Servicios Públicos</span
+                >
+                <h3 class="font-display text-2xl font-bold text-gray-800">
+                  Convenios Público-Privados
+                </h3>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                  Alianzas con reparticiones públicas, fuerzas de orden,
+                  municipalidades y programas de fomento al empleo femenino en
+                  la Región de O'Higgins.
+                </p>
+                <div class="pt-2 flex flex-wrap gap-2">
+                  <span
+                    class="bg-green-50 text-brand-green text-xs font-bold px-3 py-1 rounded-full"
+                    >Facturación institucional</span
+                  >
+                  <span
+                    class="bg-green-50 text-brand-green text-xs font-bold px-3 py-1 rounded-full"
+                    >Cupos garantizados</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- BENEFICIOS + FORMULARIO DE SOLICITUD DE CONVENIO -->
+          <div
+            class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-gradient-to-br from-[#F3EFFF] to-[#FFF9E6] rounded-[2.2rem] p-6 sm:p-10 border-2 border-purple-100"
+          >
+            <div class="lg:col-span-6 space-y-5">
+              <span
+                class="bg-brand-yellow text-gray-900 text-xs font-bold px-3.5 py-1 rounded-full uppercase"
+                >Para Recursos Humanos y Bienestar</span
+              >
+              <h2
+                class="font-display text-2xl sm:text-4xl font-bold text-gray-800"
+              >
+                Impulsa el bienestar de tus colaboradores en Rancagua
+              </h2>
+              <p class="text-gray-600 leading-relaxed">
+                Contar con un convenio con
+                <strong>Pasitos de Isa</strong> disminuye la rotación y el
+                ausentismo laboral, aumenta la productividad y mejora el clima
+                organizacional de tu empresa.
+              </p>
+              <ul class="space-y-3 text-gray-700 font-semibold">
+                <li class="flex items-center gap-3">
+                  <span
+                    class="w-8 h-8 rounded-full bg-brand-green text-white flex items-center justify-center shrink-0"
+                    ><i class="fa-solid fa-check"></i
+                  ></span>
+                  <span>Cumplimiento normativo de beneficio de Sala Cuna.</span>
+                </li>
+                <li class="flex items-center gap-3">
+                  <span
+                    class="w-8 h-8 rounded-full bg-brand-green text-white flex items-center justify-center shrink-0"
+                    ><i class="fa-solid fa-check"></i
+                  ></span>
+                  <span
+                    >Facturación mensual consolidada y reportes de
+                    asistencia.</span
+                  >
+                </li>
+                <li class="flex items-center gap-3">
+                  <span
+                    class="w-8 h-8 rounded-full bg-brand-green text-white flex items-center justify-center shrink-0"
+                    ><i class="fa-solid fa-check"></i
+                  ></span>
+                  <span
+                    >Aranceles preferenciales para hijos de trabajadores (6m a 5
+                    años).</span
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div
+              class="lg:col-span-6 bg-white rounded-3xl p-6 sm:p-8 shadow-md border border-purple-100"
+            >
+              <h3 class="font-display text-2xl font-bold text-gray-800 mb-4">
+                Solicitar Propuesta de Convenio
+              </h3>
+              <form onsubmit="handleConvenioSubmit(event)" class="space-y-4">
+                <div>
+                  <label class="block text-sm font-bold text-gray-700 mb-1"
+                    >Nombre de la Empresa o Institución</label
+                  >
+                  <input
+                    type="text"
+                    id="conv-empresa"
+                    required
+                    placeholder="Ej. Servicios Mineros O'Higgins SpA"
+                    class="w-full px-4 py-3 rounded-2xl border border-gray-200 focus:border-brand-purple focus:outline-none text-sm"
+                  />
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1"
+                      >Rubro / Sector</label
+                    >
+                    <select
+                      id="conv-rubro"
+                      class="w-full px-4 py-3 rounded-2xl border border-gray-200 focus:border-brand-purple focus:outline-none text-sm bg-white"
+                    >
+                      <option value="Minería">Minería / Contratista</option>
+                      <option value="Salud">Servicios de Salud</option>
+                      <option value="Retail">Retail / Comercio</option>
+                      <option value="Público">Institución Pública</option>
+                      <option value="Otro">Otro Rubro</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1"
+                      >Teléfono / WhatsApp</label
+                    >
+                    <input
+                      type="tel"
+                      id="conv-fono"
+                      required
+                      placeholder="+56 9 1234 5678"
+                      class="w-full px-4 py-3 rounded-2xl border border-gray-200 focus:border-brand-purple focus:outline-none text-sm"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-sm font-bold text-gray-700 mb-1"
+                    >Persona de Contacto y Cargo</label
+                  >
+                  <input
+                    type="text"
+                    id="conv-contacto"
+                    required
+                    placeholder="Ej. Juan Pérez - Jefe de Bienestar"
+                    class="w-full px-4 py-3 rounded-2xl border border-gray-200 focus:border-brand-purple focus:outline-none text-sm"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  class="w-full bg-brand-pink hover:bg-[#d9416d] text-white font-display font-semibold py-3.5 rounded-full shadow-md transition-all flex items-center justify-center gap-2"
+                >
+                  <i class="fa-solid fa-paper-plane"></i>
+                  <span>Enviar Solicitud de Convenio</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+             VISTA 6: CONTACTO (Google Maps Rancagua, Datos, RRSS y Visita)
+        ================================================================== -->
+      <section id="view-contacto" class="page-view">
+        <div
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-14 space-y-12"
+        >
+          <!-- Header -->
+          <div class="text-center max-w-3xl mx-auto space-y-3">
+            <span
+              class="inline-block bg-brand-orangeLight text-brand-orange font-display font-bold px-4 py-1.5 rounded-full text-sm border border-brand-orange/30"
+            >
+              Estamos Cerca de Ti en Rancagua
+            </span>
+            <h1
+              class="font-display text-3xl sm:text-5xl font-bold text-gray-800"
+            >
+              Contáctanos y Agenda tu Visita
+            </h1>
+            <p class="text-gray-600 text-base sm:text-lg">
+              Ven a conocer nuestras salas junto a tu hijo/a. Resolvemos todas
+              tus dudas por teléfono, correo o WhatsApp inmediato.
+            </p>
+          </div>
+
+          <!-- TARJETAS DE CONTACTO DIRECTO -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <!-- Dirección -->
+            <div
+              class="card-playful bg-white rounded-3xl p-6 border border-purple-100 text-center space-y-2"
+            >
+              <div
+                class="w-12 h-12 rounded-2xl bg-brand-purpleLight text-brand-purple flex items-center justify-center text-xl mx-auto"
+              >
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <h3 class="font-display text-lg font-bold text-gray-800">
+                Dirección
+              </h3>
+              <p class="text-sm text-gray-600 font-semibold">
+                Astorga #219, Segundo Piso<br />Portal Astorga, Rancagua
+              </p>
+            </div>
+
+            <!-- Teléfono -->
+            <div
+              class="card-playful bg-white rounded-3xl p-6 border border-yellow-100 text-center space-y-2"
+            >
+              <div
+                class="w-12 h-12 rounded-2xl bg-brand-yellowLight text-brand-orange flex items-center justify-center text-xl mx-auto"
+              >
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <h3 class="font-display text-lg font-bold text-gray-800">
+                Teléfono Fijo
+              </h3>
+              <a
+                href="tel:+56722345678"
+                class="block text-sm text-brand-purple font-bold hover:underline"
+                >+56 72 234 5678</a
+              >
+              <p class="text-xs text-gray-500">Atención telefónica 24/7</p>
+            </div>
+
+            <!-- WhatsApp Directo -->
+            <div
+              class="card-playful bg-white rounded-3xl p-6 border border-green-100 text-center space-y-2"
+            >
+              <div
+                class="w-12 h-12 rounded-2xl bg-green-100 text-[#25D366] flex items-center justify-center text-2xl mx-auto"
+              >
+                <i class="fa-brands fa-whatsapp"></i>
+              </div>
+              <h3 class="font-display text-lg font-bold text-gray-800">
+                WhatsApp Directo
+              </h3>
+              <p class="text-sm text-gray-700 font-bold">+56 9 8765 4321</p>
+              <button
+                onclick="
+                  openWhatsApp(
+                    'Hola Pasitos de Isa, les escribo desde la página de contacto.',
+                  )
+                "
+                class="text-xs font-bold bg-[#25D366] text-white px-3.5 py-1.5 rounded-full hover:bg-[#1EBE5D] transition-colors"
+              >
+                Iniciar Chat Ahora
+              </button>
+            </div>
+
+            <!-- Correo Electrónico -->
+            <div
+              class="card-playful bg-white rounded-3xl p-6 border border-blue-100 text-center space-y-2"
+            >
+              <div
+                class="w-12 h-12 rounded-2xl bg-brand-blueLight text-brand-blue flex items-center justify-center text-xl mx-auto"
+              >
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <h3 class="font-display text-lg font-bold text-gray-800">
+                Correo Electrónico
+              </h3>
+              <a
+                href="mailto:contacto@pasitosdeisa.cl"
+                class="block text-sm text-brand-blue font-bold hover:underline"
+                >contacto@pasitosdeisa.cl</a
+              >
+              <p class="text-xs text-gray-500">Respuesta en menos de 2 hrs</p>
+            </div>
+          </div>
+
+          <!-- MAPA GOOGLE MAPS RANCAGUA + FORMULARIO AGENDAR VISITA -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            <!-- Mapa Incrustado centrado en Astorga #219, Portal Astorga, Rancagua -->
+            <div
+              class="lg:col-span-7 flex flex-col justify-between bg-white rounded-[2rem] p-4 sm:p-5 border border-gray-100 card-playful space-y-4"
+            >
+              <div
+                class="rounded-2xl overflow-hidden w-full h-80 sm:h-96 border border-gray-200"
+              >
+                <iframe
+                  title="Ubicación Guardería Pasitos de Isa en Astorga #219, Portal Astorga, Rancagua, Chile"
+                  src="https://maps.google.com/maps?q=Astorga%20219,%20Rancagua,%20O'Higgins,%20Chile&t=&z=17&ie=UTF8&iwloc=&output=embed"
+                  width="100%"
+                  height="100%"
+                  style="border: 0"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                >
+                </iframe>
+              </div>
+
+              <!-- Redes Sociales -->
+              <div
+                class="flex flex-wrap items-center justify-between gap-4 px-2 pt-1"
+              >
+                <div>
+                  <p class="font-display font-bold text-gray-800">
+                    Síguenos en Instagram Oficial
+                  </p>
+                  <a
+                    href="https://www.instagram.com/pasitosdeisa/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-xs font-bold text-brand-pink hover:underline"
+                  >
+                    instagram.com/pasitosdeisa • @pasitosdeisa
+                  </a>
+                </div>
+                <div class="flex items-center gap-3">
+                  <a
+                    href="https://www.instagram.com/pasitosdeisa/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-gradient-to-tr from-yellow-500 via-pink-500 to-purple-600 text-white font-display font-semibold text-sm shadow hover:scale-105 transition-transform"
+                    aria-label="Instagram @pasitosdeisa"
+                  >
+                    <i class="fa-brands fa-instagram text-lg"></i>
+                    <span>@pasitosdeisa</span>
+                  </a>
+                  <a
+                    href="#facebook"
+                    onclick="
+                      showToast(
+                        'Abriendo Facebook Pasitos de Isa Rancagua',
+                        'info',
+                      );
+                      return false;
+                    "
+                    class="w-11 h-11 rounded-full bg-[#1877F2] text-white flex items-center justify-center text-lg shadow hover:scale-110 transition-transform"
+                    aria-label="Facebook"
+                  >
+                    <i class="fa-brands fa-facebook-f"></i>
+                  </a>
+                  <a
+                    href="#tiktok"
+                    onclick="
+                      showToast('Abriendo TikTok @pasitosdeisa', 'info');
+                      return false;
+                    "
+                    class="w-11 h-11 rounded-full bg-gray-900 text-white flex items-center justify-center text-lg shadow hover:scale-110 transition-transform"
+                    aria-label="TikTok"
+                  >
+                    <i class="fa-brands fa-tiktok"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Formulario Agendamiento Visita Guiada -->
+            <div
+              class="lg:col-span-5 bg-gradient-to-br from-[#F3EFFF] to-white rounded-[2rem] p-6 sm:p-8 border-2 border-purple-100 card-playful"
+            >
+              <h3 class="font-display text-2xl font-bold text-gray-800 mb-2">
+                Agenda una Visita Guiada
+              </h3>
+              <p class="text-sm text-gray-600 mb-5">
+                Conoce nuestras instalaciones y conversa con nuestra directora
+                en el horario que más te acomode.
+              </p>
+
+              <form onsubmit="handleVisitaSubmit(event)" class="space-y-4">
+                <div>
+                  <label class="block text-sm font-bold text-gray-700 mb-1"
+                    >Nombre del Apoderado/a</label
+                  >
+                  <input
+                    type="text"
+                    id="vis-nombre"
+                    required
+                    placeholder="Ej. María González"
+                    class="w-full px-4 py-3 rounded-2xl border border-gray-200 focus:border-brand-purple focus:outline-none text-sm bg-white"
+                  />
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1"
+                      >WhatsApp / Celular</label
+                    >
+                    <input
+                      type="tel"
+                      id="vis-fono"
+                      required
+                      placeholder="+56 9 8765 4321"
+                      class="w-full px-4 py-3 rounded-2xl border border-gray-200 focus:border-brand-purple focus:outline-none text-sm bg-white"
+                    />
+                  </div>
+                  <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1"
+                      >Edad del Niño/a</label
+                    >
+                    <select
+                      id="vis-edad"
+                      class="w-full px-4 py-3 rounded-2xl border border-gray-200 focus:border-brand-purple focus:outline-none text-sm bg-white"
+                    >
+                      <option value="6 a 12 meses">6 a 12 meses</option>
+                      <option value="1 a 2 años">1 a 2 años</option>
+                      <option value="2 a 4 años">2 a 4 años</option>
+                      <option value="4 a 5 años">4 a 5 años</option>
+                    </select>
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-sm font-bold text-gray-700 mb-1"
+                    >Jornada que necesitas</label
+                  >
+                  <input
+                    type="text"
+                    id="vis-jornada"
+                    placeholder="Ej. Turnos noche / Diurno / Fines de semana"
+                    class="w-full px-4 py-3 rounded-2xl border border-gray-200 focus:border-brand-purple focus:outline-none text-sm bg-white"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  class="w-full bg-brand-purple hover:bg-[#6847F5] text-white font-display font-semibold py-3.5 rounded-full shadow-md transition-all flex items-center justify-center gap-2"
+                >
+                  <i class="fa-solid fa-calendar-check"></i>
+                  <span>Agendar Mi Visita</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- =====================================================================
+         BOTÓN FLOTANTE PERMANENTE DE WHATSAPP
+    ====================================================================== -->
+    <button
+      onclick="
+        openWhatsApp(
+          'Hola Pasitos de Isa Rancagua! Quisiera hacer una consulta rápida sobre el programa PASITOS 24/7.',
+        )
+      "
+      aria-label="Consultar por WhatsApp"
+      class="fixed bottom-6 right-6 z-40 group flex items-center gap-3 bg-[#25D366] hover:bg-[#1EBE5D] text-white pl-4 pr-5 py-3.5 rounded-full shadow-2xl transition-all transform hover:scale-105 animate-bounce"
+    >
+      <i class="fa-brands fa-whatsapp text-3xl"></i>
+      <div class="text-left hidden sm:block">
+        <p
+          class="text-[10px] font-bold uppercase tracking-wider opacity-90 leading-none"
+        >
+          ¿Dudas? Escríbenos
+        </p>
+        <p class="font-display font-bold text-sm leading-tight">
+          WhatsApp 24/7
+        </p>
+      </div>
+    </button>
+
+    <!-- =====================================================================
+         LIGHTBOX MODAL PARA GALERÍA DE INSTALACIONES
+    ====================================================================== -->
+    <div
+      id="lightbox-modal"
+      onclick="closeLightbox()"
+      class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4"
+    >
+      <div
+        onclick="event.stopPropagation()"
+        class="bg-white rounded-3xl max-w-3xl w-full overflow-hidden shadow-2xl relative animate-[fadeInScale_0.25s_ease-out]"
+      >
+        <button
+          onclick="closeLightbox()"
+          class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/90 hover:bg-white text-gray-800 flex items-center justify-center shadow-md font-bold"
+        >
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+        <div class="aspect-[16/10] bg-gray-100">
+          <img
+            id="lightbox-img"
+            src=""
+            alt=""
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div class="p-6 space-y-2">
+          <span
+            id="lightbox-tag"
+            class="inline-block bg-brand-purpleLight text-brand-purple text-xs font-bold px-3 py-1 rounded-full"
+          ></span>
+          <h3
+            id="lightbox-title"
+            class="font-display text-2xl font-bold text-gray-800"
+          ></h3>
+          <p id="lightbox-desc" class="text-gray-600 text-sm sm:text-base"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- =====================================================================
+         FOOTER ILUSTRADO CON COLINAS VERDES, OSITO Y TRENCITO (Estilo referencia)
+    ====================================================================== -->
+    <footer class="relative mt-8 pt-12 overflow-hidden">
+      <!-- SVG Ilustración de Colinas Verdes, Árboles, Osito y Trencito -->
+      <div
+        class="w-full overflow-hidden leading-none pointer-events-none select-none"
+      >
+        <svg
+          class="w-full h-24 sm:h-32"
+          viewBox="0 0 1440 140"
+          preserveAspectRatio="none"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <!-- Colina trasera verde claro -->
+          <path
+            d="M0 75C240 20 480 110 720 65C960 20 1200 95 1440 50V140H0V75Z"
+            fill="#8CD458"
+          />
+          <!-- Colina delantera verde hoja -->
+          <path
+            d="M0 95C320 45 580 125 920 75C1160 40 1320 85 1440 70V140H0V95Z"
+            fill="#6BBF3B"
+          />
+          <!-- Árboles decorativos -->
+          <rect x="115" y="55" width="8" height="28" rx="4" fill="#7B4B2A" />
+          <circle cx="119" cy="45" r="18" fill="#4E9A24" />
+          <rect x="1310" y="50" width="8" height="28" rx="4" fill="#7B4B2A" />
+          <circle cx="1314" cy="40" r="18" fill="#4E9A24" />
+          <!-- Florecitas -->
+          <circle cx="280" cy="82" r="5" fill="#FFB800" />
+          <circle cx="1120" cy="78" r="5" fill="#F0527F" />
+          <circle cx="520" cy="96" r="4" fill="#FFFFFF" />
+        </svg>
+      </div>
+
+      <!-- Cuerpo Principal del Footer Verde -->
+      <div class="bg-[#6BBF3B] text-white pb-10 pt-2">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-8 border-b border-white/25"
+          >
+            <!-- Columna 1: Marca y Decoración Infantil -->
+            <div class="space-y-4">
+              <div class="flex items-center gap-3">
+                <div
+                  class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center shadow"
+                >
+                  <span class="text-2xl">🌞</span>
+                </div>
+                <div>
+                  <h4 class="font-display text-2xl font-bold tracking-tight">
+                    Pasitos de Isa
+                  </h4>
+                  <p class="text-xs text-green-100 font-semibold">
+                    Programa pasitos 24/7 • Rancagua
+                  </p>
+                </div>
+              </div>
+              <p class="text-sm text-green-50 leading-relaxed">
+                Acompañamos el crecimiento de niños de 6 meses a 5 años con
+                cariño, seguridad y disponibilidad continua los 365 días del
+                año.
+              </p>
+              <!-- Detalle lúdico Osito + Trencito + Instagram Oficial -->
+              <div class="flex flex-wrap items-center gap-2.5">
+                <div
+                  class="inline-flex items-center gap-2 bg-white/15 px-3.5 py-2 rounded-2xl text-lg"
+                >
+                  <span title="Osito Pasitos de Isa">🧸</span>
+                  <span title="Trencito de la alegría">🚂🚃</span>
+                </div>
+                <a
+                  href="https://www.instagram.com/pasitosdeisa/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 bg-white text-brand-pink hover:bg-brand-yellow hover:text-gray-900 font-display font-bold text-xs px-4 py-2.5 rounded-2xl shadow transition-colors"
+                >
+                  <i class="fa-brands fa-instagram text-base"></i>
+                  <span>@pasitosdeisa</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Columna 2: Enlaces Rápidos -->
+            <div class="space-y-3">
+              <h4 class="font-display text-xl font-bold">Navegación</h4>
+              <ul class="space-y-2 text-sm font-semibold text-green-50">
+                <li>
+                  <button
+                    onclick="navigateTo('inicio')"
+                    class="hover:text-brand-yellow transition-colors"
+                  >
+                    Inicio
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onclick="navigateTo('nosotros')"
+                    class="hover:text-brand-yellow transition-colors"
+                  >
+                    Misión, Visión y Equipo
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onclick="navigateTo('servicios')"
+                    class="hover:text-brand-yellow transition-colors"
+                  >
+                    Modelo 24/7 y Simulador
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onclick="navigateTo('instalaciones')"
+                    class="hover:text-brand-yellow transition-colors"
+                  >
+                    Galería de Instalaciones
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onclick="navigateTo('convenios')"
+                    class="hover:text-brand-yellow transition-colors"
+                  >
+                    Convenios Minería y Salud
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onclick="navigateTo('contacto')"
+                    class="hover:text-brand-yellow transition-colors"
+                  >
+                    Ubicación y Contacto
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Columna 3: Niveles y Turnos -->
+            <div class="space-y-3">
+              <h4 class="font-display text-xl font-bold">Nuestros Programas</h4>
+              <ul class="space-y-2 text-sm font-semibold text-green-50">
+                <li>Sala Cuna (6 meses a 2 años)</li>
+                <li>Nivel Medio (2 a 4 años)</li>
+                <li>Nivel Transición (4 a 5 años)</li>
+                <li>Turno Nocturno con TENS</li>
+                <li>Cobertura Fines de Semana</li>
+                <li>Convenios Público-Privados</li>
+              </ul>
+            </div>
+
+            <!-- Columna 4: Contacto Rancagua -->
+            <div class="space-y-3">
+              <h4 class="font-display text-xl font-bold">Contáctanos</h4>
+              <ul class="space-y-2.5 text-sm font-semibold text-green-50">
+                <li class="flex items-start gap-2.5">
+                  <i
+                    class="fa-solid fa-location-dot mt-1 text-brand-yellow"
+                  ></i>
+                  <span
+                    >Astorga #219, Segundo Piso Portal Astorga, Rancagua</span
+                  >
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <i class="fa-solid fa-phone text-brand-yellow"></i>
+                  <span>+56 72 234 5678</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <i
+                    class="fa-brands fa-whatsapp text-brand-yellow text-base"
+                  ></i>
+                  <span>+56 9 8765 4321</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <i class="fa-solid fa-envelope text-brand-yellow"></i>
+                  <span>contacto@pasitosdeisa.cl</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <i
+                    class="fa-brands fa-instagram text-brand-yellow text-base"
+                  ></i>
+                  <a
+                    href="https://www.instagram.com/pasitosdeisa/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="hover:text-brand-yellow underline transition-colors"
+                  >
+                    instagram.com/pasitosdeisa
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Copyright -->
+          <div
+            class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-semibold text-green-100 text-center"
+          >
+            <p>© 2026 Guardería Infantil Pasitos de Isa • Rancagua, Chile.</p>
+            <p>
+              Diseñado con <span class="text-brand-pink">❤</span> para las
+              familias y niños de nuestra región
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- =====================================================================
+         JAVASCRIPT DE NAVEGACIÓN MULTIPÁGINA, SIMULADOR Y GALERÍA
+    ====================================================================== -->
+    <script>
+      // Número de WhatsApp oficial de demostración para Rancagua
+      const WHATSAPP_NUMBER = "56987654321";
+
+      // Estado del simulador de planes
+      let simState = {
+        edad: "Sala Cuna (6 meses a 2 años)",
+        jornada: "Turnos Rotativos Minería / Salud (Día y Noche)",
+      };
+
+      /**
+       * Navegación multipágina fluida sin recarga (SPA)
+       * @param {string} pageId - Identificador de la vista ('inicio', 'nosotros', 'servicios', 'instalaciones', 'convenios', 'contacto')
+       */
+      function navigateTo(pageId) {
+        try {
+          // Ocultar todas las vistas
+          const views = document.querySelectorAll(".page-view");
+          views.forEach((view) => view.classList.remove("active"));
+
+          // Mostrar la vista seleccionada
+          const targetView = document.getElementById(`view-${pageId}`);
+          if (targetView) {
+            targetView.classList.add("active");
+          }
+
+          // Actualizar estado activo en las píldoras de navegación
+          const pills = document.querySelectorAll(".nav-pill");
+          pills.forEach((pill) => {
+            if (pill.dataset.page === pageId) {
+              pill.classList.add(
+                "ring-4",
+                "ring-offset-1",
+                "ring-purple-200",
+                "scale-105",
+              );
+            } else {
+              pill.classList.remove(
+                "ring-4",
+                "ring-offset-1",
+                "ring-purple-200",
+                "scale-105",
+              );
+            }
+          });
+
+          // Desplazar suavemente hacia arriba
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        } catch (error) {
+          console.error("Error al cambiar de página:", error);
+        }
+      }
+
+      /**
+       * Abre WhatsApp Web o App con mensaje predefinido en español de Chile
+       * @param {string} message - Texto del mensaje
+       */
+      function openWhatsApp(message) {
+        const encodedMsg = encodeURIComponent(message);
+        const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMsg}`;
+        showToast("Abriendo chat de WhatsApp con Pasitos de Isa...", "success");
+        window.open(url, "_blank", "noopener,noreferrer");
+      }
+
+      /**
+       * Sistema de notificaciones amigables (Reemplazo de alert())
+       */
+      function showToast(text, type = "success") {
+        const container = document.getElementById("toast-container");
+        const toast = document.createElement("div");
+        const bgColor =
+          type === "success" ? "bg-brand-green" : "bg-brand-purple";
+
+        toast.className = `${bgColor} text-white px-5 py-3.5 rounded-2xl shadow-xl flex items-center gap-3 pointer-events-auto transform transition-all duration-300 translate-y-0 opacity-100`;
+        toast.innerHTML = `
+                <i class="fa-solid ${type === "success" ? "fa-circle-check" : "fa-circle-info"} text-lg"></i>
+                <span class="text-sm font-bold leading-snug">${text}</span>
+            `;
+        container.appendChild(toast);
+
+        setTimeout(() => {
+          toast.classList.add("opacity-0", "-translate-y-2");
+          setTimeout(() => toast.remove(), 300);
+        }, 3800);
+      }
+
+      /**
+       * Lógica del Simulador Interactivo de Planes 24/7
+       */
+      function selectSimEdad(edad) {
+        simState.edad = edad;
+        document.querySelectorAll(".sim-edad-btn").forEach((btn) => {
+          const isSelected = btn.textContent.includes(edad.split(" (")[0]);
+          btn.className = isSelected
+            ? "sim-edad-btn active text-left px-4 py-3 rounded-2xl border-2 border-brand-purple bg-brand-purpleLight font-bold text-brand-purple text-sm transition-all flex items-center justify-between"
+            : "sim-edad-btn text-left px-4 py-3 rounded-2xl border-2 border-gray-100 hover:border-purple-200 font-bold text-gray-700 text-sm transition-all flex items-center justify-between";
+          btn.querySelector("i").className = isSelected
+            ? "fa-solid fa-circle-check"
+            : "fa-regular fa-circle text-gray-300";
+        });
+        updateSimulatorOutput();
+      }
+
+      function selectSimJornada(jornada) {
+        simState.jornada = jornada;
+        document.querySelectorAll(".sim-jornada-btn").forEach((btn) => {
+          const isSelected = btn.textContent.includes(
+            jornada.split(" (")[0].split(" /")[0],
+          );
+          btn.className = isSelected
+            ? "sim-jornada-btn active text-left px-4 py-3 rounded-2xl border-2 border-brand-green bg-brand-greenLight font-bold text-gray-800 text-sm transition-all flex items-center justify-between"
+            : "sim-jornada-btn text-left px-4 py-3 rounded-2xl border-2 border-gray-100 hover:border-green-200 font-bold text-gray-700 text-sm transition-all flex items-center justify-between";
+          btn.querySelector("i").className = isSelected
+            ? "fa-solid fa-circle-check text-brand-green"
+            : "fa-regular fa-circle text-gray-300";
+        });
+        updateSimulatorOutput();
+      }
+
+      function updateSimulatorOutput() {
+        const titleEl = document.getElementById("sim-result-title");
+        const descEl = document.getElementById("sim-result-desc");
+
+        if (simState.jornada.includes("Minería")) {
+          titleEl.textContent = `Plan Flex 24/7 Turnos Rotativos + ${simState.edad.split(" (")[0]}`;
+          descEl.textContent = `Incluye cupo garantizado en turnos diurnos, noches con TENS pediátrica, fines de semana según tu rol de turno (7x7 o 4x4), alimentación completa y bitácora digital.`;
+        } else if (simState.jornada.includes("Retail")) {
+          titleEl.textContent = `Plan Vespertino & Fin de Semana + ${simState.edad.split(" (")[0]}`;
+          descEl.textContent = `Cobertura extendida hasta las 23:00 hrs más sábados y domingos completos. Incluye merienda, cena nutritiva, rutina de sueño y talleres recreativos.`;
+        } else {
+          titleEl.textContent = `Plan Jornada Diurna Integral + ${simState.edad.split(" (")[0]}`;
+          descEl.textContent = `Atención de lunes a viernes (07:30 a 19:30 hrs) con estimulación temprana, talleres pedagógicos, almuerzo saludable y opción de extensión horaria ante imprevistos.`;
+        }
+      }
+
+      function sendSimulatorWhatsApp() {
+        const msg = `Hola Pasitos de Isa! Usé el simulador de su web y me interesa cotizar el plan PASITOS 24/7 para:\n• Edad: ${simState.edad}\n• Jornada: ${simState.jornada}`;
+        openWhatsApp(msg);
+      }
+
+      /**
+       * Filtrado de Galería de Instalaciones
+       */
+      function filterGallery(category, btnElement) {
+        // Actualizar botones
+        document.querySelectorAll(".filter-btn").forEach((btn) => {
+          btn.className =
+            "filter-btn px-5 py-2.5 rounded-full font-display font-semibold text-sm bg-gray-100 hover:bg-purple-50 text-gray-700 transition-all";
+        });
+        btnElement.className =
+          "filter-btn active px-5 py-2.5 rounded-full font-display font-semibold text-sm bg-brand-purple text-white shadow-sm transition-all";
+
+        // Mostrar / ocultar tarjetas
+        const items = document.querySelectorAll(".gallery-item");
+        items.forEach((item) => {
+          if (category === "todos" || item.dataset.category === category) {
+            item.style.display = "block";
+          } else {
+            item.style.display = "none";
+          }
+        });
+      }
+
+      /**
+       * Lightbox para ampliar fotografías de instalaciones
+       */
+      function openLightbox(card) {
+        const img = card.querySelector("img");
+        const tag = card.querySelector("span").textContent;
+        const title = card.querySelector("h3").textContent;
+        const desc = card.querySelector("p").textContent;
+
+        document.getElementById("lightbox-img").src = img.src;
+        document.getElementById("lightbox-img").alt = title;
+        document.getElementById("lightbox-tag").textContent = tag;
+        document.getElementById("lightbox-title").textContent = title;
+        document.getElementById("lightbox-desc").textContent = desc;
+
+        const modal = document.getElementById("lightbox-modal");
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+      }
+
+      function closeLightbox() {
+        const modal = document.getElementById("lightbox-modal");
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+      }
+
+      /**
+       * Manejadores de formularios (Convenios y Visita Guiada)
+       */
+      function handleConvenioSubmit(e) {
+        e.preventDefault();
+        const empresa = document.getElementById("conv-empresa").value;
+        const rubro = document.getElementById("conv-rubro").value;
+        const contacto = document.getElementById("conv-contacto").value;
+
+        showToast(
+          `¡Gracias ${contacto}! Recibimos la solicitud de convenio para ${empresa} (${rubro}). Nos contactaremos hoy mismo.`,
+        );
+        e.target.reset();
+      }
+
+      function handleVisitaSubmit(e) {
+        e.preventDefault();
+        const nombre = document.getElementById("vis-nombre").value;
+        const edad = document.getElementById("vis-edad").value;
+
+        showToast(
+          `¡Agendado ${nombre}! Te escribiremos por WhatsApp para confirmar la hora de tu visita para el nivel ${edad}.`,
+        );
+        e.target.reset();
+      }
+
+      // Inicializar estado activo en la primera píldora al cargar
+      window.addEventListener("DOMContentLoaded", () => {
+        const firstPill = document.querySelector(
+          '.nav-pill[data-page="inicio"]',
+        );
+        if (firstPill) {
+          firstPill.classList.add(
+            "ring-4",
+            "ring-offset-1",
+            "ring-purple-200",
+            "scale-105",
+          );
+        }
+      });
+    </script>
+  </body>
+</html>
